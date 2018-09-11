@@ -1,0 +1,22 @@
+import(dplyr,
+       fifer,
+       ggplot2,
+       glmnet,
+       gridExtra)
+
+export(bestFeatures,
+       binUplift,
+       binUpliftEnhanced,
+       dualPredict,
+       dualUplift,
+       generateScene,
+       generateUplift,
+       interPredict,
+       interUplift,
+       lassoPath,
+       qiniArea,
+       qiniBarPlot,
+       qiniCurve,
+       qiniTable,
+       splitUplift,
+       squareUplift)
