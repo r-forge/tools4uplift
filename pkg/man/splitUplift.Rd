@@ -5,7 +5,7 @@
 Split dataset with respect to Uplift distribution
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Split a dataset into training and validation subsets with respect to the uplift sample distribution.
 }
 \usage{
 splitUplift(data, p, group)

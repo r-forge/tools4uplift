@@ -5,7 +5,7 @@
 Least Absolute Shrinkage and Selection Operator Path
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Fit an interaction uplift model via penalized maximum likelihood. The regularization path is computed for the lasso penalty at a grid of values for the regularization parameter lambda.
 }
 \usage{
 lassoPath(data, formula, nb_lambda = 100)

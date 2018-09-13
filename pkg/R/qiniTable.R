@@ -1,6 +1,5 @@
-qiniTable <-
-function(data, nbGroup, treatment, outcome, prediction)
-{
+qiniTable <- function(data, nbGroup, treatment, outcome, prediction){
+  
   data$rank <- 0
   data$rank = rank(-data[[prediction]], ties.method = "min") / nrow(data)
   

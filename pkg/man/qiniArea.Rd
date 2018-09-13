@@ -5,7 +5,7 @@
 Computes the Qini coefficient
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Compute the area under the Qini curve.
 }
 \usage{
 qiniArea(x)
@@ -50,10 +50,12 @@ split <- splitUplift(data, 0.5, c("treat", "y"))
 train <- split[[1]]
 valid <- split[[2]]
 
-square <- squareUplift(train, valid, "X1", "X2", "treat", "y", step=0.3, nbGroup=5, plotit=FALSE)
+square <- squareUplift(train, valid, "X1", "X2", "treat", "y", 
+                      step=0.3, nbGroup=5, plotit=FALSE)
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- qiniTable(data=square[[1]], nbGroup=4, treatment="treat", outcome="y", prediction="uplift")
+perf <- qiniTable(data=square[[1]], nbGroup=4, treatment="treat", 
+                  outcome="y", prediction="uplift")
 
 qiniArea(perf)
 

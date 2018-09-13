@@ -5,7 +5,7 @@
 Optimal partitionning for Uplift Models
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Univariate optimal partitionning for Uplift Models. The algorithm categorizes a single variable into bins with significantly different uplift values.
 }
 \usage{
 binUplift(df, 
@@ -86,7 +86,8 @@ library(tools4uplift)
 scene <- generateScene(plotit=FALSE)
 train <- generateUplift(scene, 1000, 10)
 
-binX1 <- binUplift(df=train, response="y", group="treat", varX="X1", alpha=0.10, n.min=3, title="Binning for X1")
+binX1 <- binUplift(df=train, response="y", group="treat", varX="X1", 
+                  alpha=0.10, n.min=3, title="Binning for X1")
 
 
 }

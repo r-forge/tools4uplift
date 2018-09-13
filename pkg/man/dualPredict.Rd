@@ -5,7 +5,7 @@
 Predictions from the two-model Uplift Model Estimator
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Predictions from the two-model uplift model estimator with associated model performance.
 }
 \usage{
 dualPredict(data, treat, outcome, model, nb_group = 10, plotit = FALSE)

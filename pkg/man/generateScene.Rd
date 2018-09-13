@@ -5,7 +5,7 @@
 Scenarios for Personalized Treatment Effects
 }
 \description{
-Creation of scenarios for treatment effect heterogeneity estimation
+Creation of scenarios for treatment effect heterogeneity estimation.
 }
 \usage{
 generateScene(space_dimension = 2, 

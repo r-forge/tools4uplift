@@ -5,7 +5,7 @@
 Simulations for Personalized Treatment Effects
 }
 \description{
-Numerical simulation for treatment effect heterogeneity estimation
+Numerical simulation for treatment effect heterogeneity estimation.
 }
 \usage{
 generateUplift(object, nbobs, dimension)

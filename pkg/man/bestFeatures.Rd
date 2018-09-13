@@ -64,7 +64,8 @@ library(tools4uplift)
 scene <- generateScene(plotit=FALSE)
 data <- generateUplift(scene, 1000, 10)
 
-features <- bestFeatures(data, "y", "treat", colnames(data[,3:12]), nb_lambda = 100, nb_group = 10, value = FALSE)
+features <- bestFeatures(data, "y", "treat", colnames(data[,3:12]), 
+                          nb_lambda = 100, nb_group = 10, value = FALSE)
 
 
 }

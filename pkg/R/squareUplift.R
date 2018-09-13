@@ -1,8 +1,6 @@
-squareUplift <-
-function(train, valid, var1, var2, treat, outcome, step, 
-         n.min=1, 
-         plotit = TRUE, nbGroup = 10){
-
+squareUplift <- function(train, valid, var1, var2, treat, outcome, step, 
+                         n.min=1, plotit = TRUE, col = heat.colors(100), nbGroup = 10){
+  
   #Initalize grid of uplifts for training set
   seq_col = seq(floor(min(train[,paste(var1)])),ceiling(max(train[,paste(var1)])),step)
   seq_row = seq(floor(min(train[,paste(var2)])),ceiling(max(train[,paste(var2)])),step)
@@ -37,6 +35,22 @@ function(train, valid, var1, var2, treat, outcome, step,
   
   index.naT <- is.na(train$uplift)==TRUE
   train[index.naT,"uplift"] <- sum(train[index.naT,paste(treat)] == 1 & train[index.naT,paste(outcome)] == 1)/sum(train[index.naT,paste(treat)] == 1) - sum(train[index.naT,paste(treat)] == 0 & train[index.naT,paste(outcome)] == 1)/sum(train[index.naT,paste(treat)] == 0)
+  
+  #Plot the heat map for the training dataset
+  if (plotit) {
+    train.rank = rank(-train[["uplift"]], ties.method = "min") / nrow(train)
+    
+    for(i in 1:nbGroup){
+      train$cluster[train.rank > (i-1)/nbGroup & train.rank <= i/nbGroup] <- i
+    }
+    
+    train$cluster <- as.factor(train$cluster)
+    
+    #reverse and transpose the grid in order to get the actual heat map with image function
+    rev_grid <- apply(grid, 2, rev)
+    image(seq_row, seq_col, t(rev_grid), xlab = paste(var1), ylab = paste(var2), col = col)
+    title(main = "Heat Map for Training Set", font.main = 1)
+  }
   
   
   #if length(valid) != 0
@@ -75,26 +89,20 @@ function(train, valid, var1, var2, treat, outcome, step,
   index.naT <- is.na(valid$uplift)==TRUE
   valid[index.naT,"uplift"] <- sum(valid[index.naT,paste(treat)] == 1 & valid[index.naT,paste(outcome)] == 1)/sum(valid[index.naT,paste(treat)] == 1) - sum(valid[index.naT,paste(treat)] == 0 & valid[index.naT,paste(outcome)] == 1)/sum(valid[index.naT,paste(treat)] == 0)
   
-  
+  #Plot the heat map for the validation dataset
   if (plotit) {
-    train.rank = rank(-train[["uplift"]], ties.method = "min") / nrow(train)
     valid.rank = rank(-valid[["uplift"]], ties.method = "min") / nrow(valid)
     
     for(i in 1:nbGroup){
-      train$cluster[train.rank > (i-1)/nbGroup & train.rank <= i/nbGroup] <- i
       valid$cluster[valid.rank > (i-1)/nbGroup & valid.rank <= i/nbGroup] <- i
-      }
-  
-    train$cluster <- as.factor(train$cluster)
+    }
+    
     valid$cluster <- as.factor(valid$cluster)
     
-    ptrain <- qplot(x=train[,var1], y=train[,var2], data=train, colour=cluster, 
-                    main="Heat Map on Training Set", xlab=paste(var1), ylab=paste(var2)) +scale_fill_gradientn(colours = terrain.colors(10)) 
-                    #+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                    #panel.background = element_blank(), axis.line = element_line(colour = "black"))
-    pvalid <- qplot(x=valid[,var1], y=valid[,var2], data=valid, colour=cluster, 
-                    main="Heat Map on Validation Set", xlab=paste(var1), ylab=paste(var2))+scale_fill_gradientn(colours = terrain.colors(10))
-    grid.arrange(ptrain, pvalid, ncol=2)
+    #reverse and transpose the grid in order to get the actual heat map with image function
+    rev_grid <- apply(grid, 2, rev)
+    image(seq_row, seq_col, t(rev_grid), xlab = paste(var1), ylab = paste(var2), col = col)
+    title(main = "Heat Map for Validation Set", font.main = 1)
   }
   
   squareUplift = list(train, valid)

@@ -5,7 +5,7 @@
 The interaction Uplift Model Estimator
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Fit the interaction uplift model estimator.
 }
 \usage{
 interUplift(data, treat, outcome, predictors, input = "p")
@@ -57,6 +57,8 @@ interUplift(data, treat, outcome, predictors, input = "p")
 library(tools4uplift)
 scene <- generateScene(plotit=FALSE)
 data <- generateUplift(scene, 1000, 10)
+
+fit <- interUplift(data, "treat", "y", data[,3:12])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -5,7 +5,7 @@
 The two-model Uplift Model Estimator
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Fit the two-model uplift model estimator.
 }
 \usage{
 dualUplift(data, treat, outcome, predictors)
@@ -54,6 +54,8 @@ dualUplift(data, treat, outcome, predictors)
 library(tools4uplift)
 scene <- generateScene(plotit=FALSE)
 data <- generateUplift(scene, 1000, 10)
+
+fit <- dualUplift(data, "treat", "y", data[,3:12])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

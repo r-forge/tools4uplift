@@ -1,7 +1,6 @@
 import(dplyr,
        ggplot2,
-       glmnet,
-       gridExtra)
+       glmnet)
 
 export(bestFeatures,
        binUplift,

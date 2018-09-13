@@ -2,10 +2,10 @@
 \alias{binUpliftEnhanced}
 \docType{data}
 \title{
-Augmented Data With Binned Variables
+Optimal partitionning for Uplift Models Augmented Dataset 
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of the dataset. ~~
+Univariate optimal partitionning for Uplift Models. The algorithm categorizes a list of variables into bins and creates an augmented dataset with the binned variables.
 }
 \usage{
 binUpliftEnhanced(data, 
