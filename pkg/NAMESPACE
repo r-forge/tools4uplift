@@ -1,3 +1,7 @@
+importFrom("grDevices", "heat.colors", "rgb")
+importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "plot", "title")
+importFrom("stats", "as.formula", "binomial", "complete.cases", "glm", "model.frame", "model.matrix", "predict", "qnorm", "rbinom", "runif")
+
 import(dplyr,
        ggplot2,
        glmnet)

@@ -8,7 +8,8 @@ Non-parametric heat map for Uplift Models
 A non-parametric heat map representing the observed uplift in squares that explore a bi-variate dimension space.
 }
 \usage{
-squareUplift(train, valid, var1, var2, treat, outcome, step, n.min=1, plotit = TRUE, col = heat.colors(100), nbGroup = 10)
+squareUplift(train, valid, var1, var2, treat, outcome, 
+          step, n.min=1, plotit = TRUE, col = heat.colors(100), nbGroup = 10)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
