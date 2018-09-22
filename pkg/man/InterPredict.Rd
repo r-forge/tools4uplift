@@ -8,7 +8,7 @@ Predictions from the interaction Uplift Model Estimator
 Predictions from the interaction uplift model estimator with associated model performance.
 }
 \usage{
-InterPredict(data, treat, outcome, model, nb_group = 10, plotit = FALSE)
+InterPredict(data, treat, outcome, model, nb.group = 10, plotit = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -24,7 +24,7 @@ InterPredict(data, treat, outcome, model, nb_group = 10, plotit = FALSE)
   \item{model}{
 %%     ~~Describe \code{model} here~~
 }
-  \item{nb_group}{
+  \item{nb.group}{
 %%     ~~Describe \code{nb_group} here~~
 }
   \item{plotit}{
