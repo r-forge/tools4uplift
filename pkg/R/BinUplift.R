@@ -211,7 +211,7 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
   #This part is optional but we could add a plot post-binning
   #Also, a sas code output could help to copy paste and perform the binning directly on sas
   
-  BinUpliftPlot <- function(data, out.tree, x, ylim = NULL, ylab = "Uplift"){
+  BinUpliftPlot <- function(data, out.tree, x, ylim = NULL, ylab = "Uplift", color, title){
     
     y <- deparse(substitute(y))
     treat <- deparse(substitute(treat))
@@ -251,7 +251,7 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     
   }
   
-  BinUpliftPlotC <- function(data, out.tree, out.link, x, ylim = NULL, ylab = "Uplift"){
+  BinUpliftPlotC <- function(data, out.tree, out.link, x, ylim = NULL, ylab = "Uplift", color, title){
     
     y <- deparse(substitute(y))
     treat <- deparse(substitute(treat))
