@@ -13,13 +13,13 @@ InterPredict(data, treat, outcome, model, nb.group = 10, plotit = FALSE)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{data} here~~
+a data frame containing the treatment, the outcome and the predictors.
 }
   \item{treat}{
-%%     ~~Describe \code{treat} here~~
+name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 }
   \item{outcome}{
-%%     ~~Describe \code{outcome} here~~
+name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{model}{
 %%     ~~Describe \code{model} here~~

@@ -13,13 +13,13 @@ InterUplift(data, treat, outcome, predictors, input = c("p", "bf"))
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{data} here~~
+a data frame containing the treatment, the outcome and the predictors.
 }
   \item{treat}{
-%%     ~~Describe \code{treat} here~~
+name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 }
   \item{outcome}{
-%%     ~~Describe \code{outcome} here~~
+name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{predictors}{
 %%     ~~Describe \code{predictors} here~~
@@ -59,7 +59,7 @@ library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
 train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 
-fit <- InterUplift(train, "treat", "y", data[,3:12], "p")
+fit <- InterUplift(train, "treat", "y", train[,3:12], "p")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

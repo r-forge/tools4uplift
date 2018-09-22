@@ -13,13 +13,13 @@ LassoPath(data, formula, nb.lambda = 100)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{data} here~~
+a data frame containing the treatment, the outcome and the predictors.
 }
   \item{formula}{
-%%     ~~Describe \code{formula} here~~
+an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.
 }
   \item{nb.lambda}{
-%%     ~~Describe \code{nb_lambda} here~~
+the number of lambda values - Default is 100.
 }
 }
 \details{
@@ -36,14 +36,8 @@ LassoPath(data, formula, nb.lambda = 100)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Mouloud Belbahri
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
