@@ -2,7 +2,7 @@
 \alias{InterPredict}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Predictions from the interaction Uplift Model Estimator
+Predictions from an interaction estimator
 }
 \description{
 Predictions from the interaction uplift model estimator with associated model performance.
@@ -22,45 +22,37 @@ name of a binary (numeric) vector representing the treatment assignment (coded a
 name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{model}{
-%%     ~~Describe \code{model} here~~
+a model that must be the output of \code{InterUplift} function.
 }
   \item{nb.group}{
-%%     ~~Describe \code{nb_group} here~~
+number of groups of equal observations in which to partition the data in order to compute model performance. 
 }
   \item{plotit}{
-%%     ~~Describe \code{plotit} here~~
+if \code{TRUE}, a \code{QiniCurve} and \code{QiniBarPlot} are returned. 
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{data}{a data frame augmented with the predicted uplift}
+\item{qini }{a Qini Coefficient}
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Mouloud Belbahri
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{InterUplift}
 }
 \examples{
 
 library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
 train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+
+fit <- InterUplift(train, "treat", "y", train[,3:12])
+
+pred <- InterPredict(train, "treat", "y", model = fit, nb.group = 5)[[1]]
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

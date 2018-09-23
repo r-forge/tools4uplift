@@ -2,10 +2,10 @@
 \alias{GenerateScene}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Scenarios for Personalized Treatment Effects
+Simulations of scenarios for treatment effects
 }
 \description{
-Creation of scenarios for treatment effect heterogeneity estimation.
+Creation of scenarios in low space dimenstion for treatment effect heterogeneity estimation.
 }
 \usage{
 GenerateScene(space_dimension = 2, 
@@ -21,51 +21,43 @@ GenerateScene(space_dimension = 2,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{space_dimension}{
-%%     ~~Describe \code{space_dimension} here~~
+space dimension.
 }
   \item{Principal_effect}{
-%%     ~~Describe \code{Principal_effect} here~~
+principal effect.
 }
   \item{Principal_std}{
-%%     ~~Describe \code{Principal_std} here~~
+standard deviation of principal effect.
 }
   \item{Control_effect_positive}{
-%%     ~~Describe \code{Control_effect_positive} here~~
+positive effect of control group.
 }
   \item{Control_std_positive}{
-%%     ~~Describe \code{Control_std_positive} here~~
+standard deviation of positive effect of control group.
 }
   \item{Control_effect_negative}{
-%%     ~~Describe \code{Control_effect_negative} here~~
+negative effect of control group.
 }
   \item{Control_std_negative}{
-%%     ~~Describe \code{Control_std_negative} here~~
+standard deviation of negative effect of control group.
 }
   \item{Nb_point}{
-%%     ~~Describe \code{Nb_point} here~~
+number of points per effect (principal, positive, negative) in order to generate the uplift functions.
 }
   \item{plotit}{
-%%     ~~Describe \code{plotit} here~~
+if \code{TRUE}, plot the functions.
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{Test_propensity}{treatment group propensity function}
+\item{Control_propensity}{control group propensity function}
+\item{space_dimension}{space dimension}
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
 Olivier Gandouet
-}
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 

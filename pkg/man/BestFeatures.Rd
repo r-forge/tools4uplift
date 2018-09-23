@@ -1,7 +1,7 @@
 \name{BestFeatures}
 \alias{BestFeatures}
 \title{
-Feature Selection for the Interaction Uplift Model Estimator
+Feature selection for the interaction estimator
 }
 \description{
 Penalized logistic regression (LASSO) in order to select the features that maximize the Qini coefficient. 

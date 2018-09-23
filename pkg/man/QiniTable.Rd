@@ -2,7 +2,7 @@
 \alias{QiniTable}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Computes the performance of an Uplift model
+Performance of an uplift estimator
 }
 \description{
 Table of performance of an uplift model. This table is used in order to vizualise the performance of an uplift model and to compute the qini coefficient.
@@ -28,15 +28,8 @@ a predicted uplift (numeric) vector to sort the observations from highest to low
 number of groups of equal observations in which to partition the data set to show results.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a table with descriptive statistics related to an uplift model estimator.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -45,7 +38,7 @@ number of groups of equal observations in which to partition the data set to sho
 Mouloud Belbahri
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{QiniArea}, \code{QiniBarPlot} and \code{QiniCurve}
 }
 \examples{
 
@@ -53,17 +46,13 @@ library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
 train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 
-split <- SplitUplift(train, 0.5, c("treat", "y"))
-train <- split[[1]]
-valid <- split[[2]]
-
-square <- SquareUplift(train, valid, "X1", "X2", "treat", "y", 
-                      step = 0.3, nb.group = 5, plotit = FALSE)
+square1 <- SquareUplift(train, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- QiniTable(data = square[[1]], treat = "treat", 
-                  outcome = "y", prediction = "uplift", nb.group = 5)
-
+perf <- QiniTable(data = square1, treat = "treat", 
+                  outcome = "y", prediction = "Uplift_X1_X2")
+                  
+perf
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

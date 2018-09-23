@@ -1,15 +1,15 @@
 \name{BinUplift}
 \alias{BinUplift}
 \title{
-Optimal Partitionning for Uplift Models
+Univariate categorization
 }
 \description{
-Univariate optimal partitionning for Uplift Models. The algorithm categorizes a single variable into bins with significantly different uplift values.
+Univariate optimal partitionning for Uplift Models. The algorithm categorizes a single variable into bins with significantly different observed uplift.
 }
 \usage{
 BinUplift(data, treat, outcome, x, n.split = 10, alpha = 0.05, 
-                       n.min = 30, ylim = NULL, ylab = "Uplift",
-                       title = "Binning Results", color = NULL)
+          n.min = 30, ylim = NULL, ylab = "Uplift",
+          title = "Binning Results", color = NULL)
 }
 \arguments{
   \item{data}{
@@ -46,15 +46,11 @@ an overall title for the plot.
 a color for the plot. If ommitted, the color will be set by default to a custom light blue. 
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
+\item{out.tree}{Descriptive statistics for the different nodes of the tree}
+\item{sas.code}{SAS code generated for variable categorization}
+
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -63,7 +59,7 @@ a color for the plot. If ommitted, the color will be set by default to a custom 
 Mouloud Belbahri
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~ BinUpliftEnhanced
+\code{BinUpliftEnhanced}
 }
 \examples{
 
@@ -74,9 +70,7 @@ train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 binX1 <- BinUplift(data = train, treat = "treat", outcome = "y", x = "X1", 
                   alpha = 0.10, n.min = 3, title = "Binning for X1")
 
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{tree}

@@ -1,15 +1,16 @@
 \name{BinUpliftEnhanced}
 \alias{BinUpliftEnhanced}
 \title{
-Optimal Partitionning for Uplift Models Augmented Dataset 
+Univariate categorization - augmented data
 }
 \description{
 Univariate optimal partitionning for Uplift Models. The algorithm categorizes several variables into bins and creates an augmented dataset with the binned variables.
 }
 \usage{
-BinUpliftEnhanced(data, treat, outcome, var.list, n.split = 10, alpha = 0.05, 
-                              n.min = 30, ylim = NULL, ylab = "Uplift",
-                              title = "Binning Results", color = NULL)
+BinUpliftEnhanced(data, treat, outcome, var.list, n.split = 10, 
+                  alpha = 0.05, n.min = 30, ylim = NULL, 
+                  ylab = "Uplift", title = "Binning Results", 
+                  color = NULL)
 }
 \arguments{
   \item{data}{
@@ -46,9 +47,6 @@ an overall title for the plot.
 a color for the plot. If ommitted, the color will be set by default to a custom light blue. 
 }
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
 \value{
 %%  ~Describe the value returned
 an augmented data frame with categorized variables. If a variable is enhanced, the function returns automatically a barplot.
@@ -60,7 +58,7 @@ an augmented data frame with categorized variables. If a variable is enhanced, t
 Olivier Gandouet
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~ BinUpliftEnhanced
+\code{BinUplift}
 }
 \examples{
 
@@ -73,5 +71,4 @@ train.enhanced <- BinUpliftEnhanced(data = train, treat = "treat", outcome = "y"
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{tree}% use one of  RShowDoc("KEYWORDS")

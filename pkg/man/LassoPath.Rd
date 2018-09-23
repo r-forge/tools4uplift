@@ -2,7 +2,7 @@
 \alias{LassoPath}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Least Absolute Shrinkage and Selection Operator Path
+LASSO path for penalized logistic regression
 }
 \description{
 Fit an interaction uplift model via penalized maximum likelihood. The regularization path is computed for the lasso penalty at a grid of values for the regularization parameter lambda.
@@ -22,15 +22,8 @@ an object of class "formula" (or one that can be coerced to that class): a symbo
 the number of lambda values - Default is 100.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a dataframe containing the coefficients values and the number of nonzeros coefficients for different values of lambda.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -39,10 +32,10 @@ the number of lambda values - Default is 100.
 Mouloud Belbahri
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{BestFeatures}, \code{glmnet}
 }
 \examples{
-
+#See glmnet() from library("glmnet") for more information
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

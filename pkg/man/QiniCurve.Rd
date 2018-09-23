@@ -2,7 +2,7 @@
 \alias{QiniCurve}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Plots the Qini curve
+Qini curve
 }
 \description{
 Curve of the function Qini, the incremental observed uplift with respect to predicted uplift sorted from the highest to the lowest.
@@ -22,15 +22,8 @@ an overall title for the plot.
 color of the curve.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a Qini curve
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -39,7 +32,7 @@ color of the curve.
 Mouloud Belbahri
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{QiniTable}
 }
 \examples{
 
@@ -47,17 +40,11 @@ library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
 train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 
-split <- SplitUplift(train, 0.5, c("treat", "y"))
-train <- split[[1]]
-valid <- split[[2]]
-
-square <- SquareUplift(train, valid, "X1", "X2", "treat", "y", 
-                      step = 0.3, nb.group = 5, plotit = FALSE)
+square1 <- SquareUplift(train, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- QiniTable(data = square[[1]], treat = "treat", 
-                  outcome = "y", prediction = "uplift", nb.group = 5)
-
+perf <- QiniTable(data = square1, treat = "treat", 
+                  outcome = "y", prediction = "Uplift_X1_X2", nb.group = 5)
 QiniCurve(perf)
 
 }

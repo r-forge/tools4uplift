@@ -2,13 +2,13 @@
 \alias{InterUplift}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-The interaction Uplift Model Estimator
+Interaction estimator
 }
 \description{
 Fit the interaction uplift model estimator.
 }
 \usage{
-InterUplift(data, treat, outcome, predictors, input = c("p", "bf"))
+InterUplift(data, treat, outcome, predictors, input = "p"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,36 +22,23 @@ name of a binary (numeric) vector representing the treatment assignment (coded a
 name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{predictors}{
-%%     ~~Describe \code{predictors} here~~
+a vector of names representing the explanatory variables to include in the model.
 }
   \item{input}{
-%%     ~~Describe \code{input} here~~
+an option for \code{predictors} argument. If \code{"p"} (default), the model assumes that the model has to create the interaction of all varibles with \code{treat}. If \code{"bf"}, the model assumes that the \code{predictors} vector is the output of the \code{BestFeatures} function.
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+an interaction model
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Mouloud Belbahri
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{InterPredict}
 }
 \examples{
 
@@ -59,7 +46,7 @@ library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
 train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 
-fit <- InterUplift(train, "treat", "y", train[,3:12], "p")
+fit <- InterUplift(train, "treat", "y", train[,3:12])
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

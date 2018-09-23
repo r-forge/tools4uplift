@@ -2,7 +2,7 @@
 \alias{GenerateUplift}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Simulations for Personalized Treatment Effects
+Simulations of synthetic data
 }
 \description{
 Numerical simulation for treatment effect heterogeneity estimation.
@@ -22,24 +22,14 @@ number of observations.
 number of predictors.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a data frame containing \code{nbobs} observations with \code{dimension} features and associated outcome \code{y} and \code{treat} variable.
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
 Olivier Gandouet
-}
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 
