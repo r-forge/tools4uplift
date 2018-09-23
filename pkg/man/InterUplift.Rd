@@ -8,7 +8,7 @@ Interaction estimator
 Fit the interaction uplift model estimator.
 }
 \usage{
-InterUplift(data, treat, outcome, predictors, input = "p"))
+InterUplift(data, treat, outcome, predictors, input = "p")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
