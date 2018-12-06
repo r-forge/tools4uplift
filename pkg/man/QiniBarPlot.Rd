@@ -19,7 +19,7 @@ a table that must be the output of \code{QiniTable} function.
 an overall title for the plot.
 }
   \item{color}{
-color of the curve.
+color of the barplot.
 }
 }
 \value{

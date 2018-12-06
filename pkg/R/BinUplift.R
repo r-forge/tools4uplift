@@ -40,9 +40,9 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
       x.cut[i] = min(data[[x]]) + i*x.step
     }
     
-    splits <- matrix(data = NA, nrow = length(x.cut), ncol = 12)
+    splits <- matrix(data = NA, nrow = length(x.cut), ncol = 14)
     colnames(splits) <- c("x.cut", "n.lt", "n.lc", "p.lt", "p.lc", "u.l",
-                          "n.rt", "n.rc", "p.rt", "p.rc", "u.r", "diff")
+                          "n.rt", "n.rc", "p.rt", "p.rc", "u.r", "diff", "p.t", "p.c")
     
     for(i in 1:length(x.cut)){ 
       
@@ -71,6 +71,11 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
       
       splits[i, 12] <- abs(splits[i, 6] - splits[i, 11]) #diff
       
+      #probabilities of success in treatment and control groups
+      splits[i, 13] <- sum(data[[treat]]==1 & data[[outcome]]==1)/sum(data[[treat]]==1) #p.t
+      splits[i, 14] <- sum(data[[treat]]==0 & data[[outcome]]==1)/sum(data[[treat]]==0) #p.c
+      
+      
     }
     
     return(splits)
@@ -84,10 +89,22 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     
     test.splits <- data.frame(splits)
     test.splits$z.num <- (test.splits$p.lt - test.splits$p.lc - test.splits$p.rt + test.splits$p.rc)
-    test.splits$z.den <- sqrt((test.splits$p.lt*(1-test.splits$p.lt))/test.splits$n.lt +
-                                (test.splits$p.lc*(1-test.splits$p.lc))/test.splits$n.lc +
-                                (test.splits$p.rt*(1-test.splits$p.rt))/test.splits$n.rt +
-                                (test.splits$p.rc*(1-test.splits$p.rc))/test.splits$n.rc)
+    
+    #test.splits$z.den <- sqrt(
+    #                          (test.splits$p.lt*(1-test.splits$p.lt))/test.splits$n.lt +
+    #                          (test.splits$p.lc*(1-test.splits$p.lc))/test.splits$n.lc +
+    #                          (test.splits$p.rt*(1-test.splits$p.rt))/test.splits$n.rt +
+    #                          (test.splits$p.rc*(1-test.splits$p.rc))/test.splits$n.rc
+    #                          )
+    
+    N_T <- test.splits$n.lt + test.splits$n.rt
+    N_C <- test.splits$n.lc + test.splits$n.rc
+    
+    test.splits$z.den <- sqrt( ((N_T^2)*test.splits$p.t*(1-test.splits$p.t)) / 
+                                 (test.splits$n.lt*(N_T-test.splits$n.lt)*(N_T-1)) +
+                                 ((N_C^2)*test.splits$p.c*(1-test.splits$p.c)) / 
+                                 (test.splits$n.lc*(N_C-test.splits$n.lc)*(N_C-1)) )
+    
     test.splits$z.obs <- abs(test.splits$z.num / test.splits$z.den)
     
     test.splits$sign <- 1*(test.splits$z.obs > z.a)

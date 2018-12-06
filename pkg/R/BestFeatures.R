@@ -1,5 +1,5 @@
 BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100, 
-                         nb.group = 10, value = FALSE){
+                         nb.group = 10, validation = FALSE, p = 0.3, value = FALSE){
 
   #Here, all variables must be continuous. Before using this function, change 
   #categorical variables to dummies.
@@ -8,6 +8,14 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
     inter.formula <- paste(inter.formula, paste(predictors[k], treat, sep = ":"), sep="+")
   }
   formula <- as.formula(paste(paste(outcome, "~", treat, "+"), paste(predictors, collapse="+"), inter.formula))
+  
+  
+  #Split data between train (data) and valid using SplitUplift
+  if (validation == TRUE) {
+    split <- SplitUplift(data, 1-p, c(treat, outcome))
+    data <- split[[1]]
+    valid <- split[[2]]
+  }
   
   path <- LassoPath(data, formula, nb.lambda)
   #Keep paths of dimension > 0
@@ -21,11 +29,16 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
     features <- features[features != 0]
     lambda.formula <- paste(paste(colnames(model.frame(formula, data))[1], "~ "), paste(names(features), collapse=" + "))
     
-    #Fit the logistic regression model on selected features only
+    #Fit the logistic regression model with selected features only
     lambda.model <- glm(lambda.formula, family=binomial(link="logit"), data)
     
     #Compute the qini coefficient and add to the list
+    if (validation == FALSE){
     lambda.qini[k] <- InterPredict(data, treat, colnames(model.frame(formula, data))[1], lambda.model, nb.group)[[2]]
+    }
+    if (validation == TRUE){
+      lambda.qini[k] <- InterPredict(valid, treat, colnames(model.frame(formula, valid))[1], lambda.model, nb.group)[[2]]
+    }
   }
   
   best.model <- cbind(path[, c(1, 2)], lambda.qini)

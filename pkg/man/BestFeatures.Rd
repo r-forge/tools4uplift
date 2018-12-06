@@ -8,7 +8,7 @@ Penalized logistic regression (LASSO) in order to select the features that maxim
 }
 \usage{
 BestFeatures(data, treat, outcome, predictors, nb.lambda = 100, nb.group = 10, 
-             value = FALSE)
+              validation = FALSE, p = 0.3, value = FALSE)
 }
 \arguments{
   \item{data}{
@@ -28,6 +28,12 @@ the number of lambda values - Default is 100.
 }
   \item{nb.group}{
 the number of groups for computing the Qini coefficient - Default is 10.
+}
+  \item{validation}{
+if TRUE, the best features are selected based on cross-validation - Default is FALSE.
+}
+  \item{p}{
+if validation is TRUE, the desired proportion for the validation set. p is a value between 0 and 1 expressed as a decimal, it is set to be proportional to the number of observations per group - Default is 0.3.
 }
   \item{value}{
 if TRUE, the values of the best lambda and Qini coefficient will be printed - Default is FALSE.
@@ -49,10 +55,10 @@ Mouloud Belbahri
 
 library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 
-features <- BestFeatures(data = train, treat = "treat", outcome = "y", 
-                         predictors = colnames(train[,3:12]))
+features <- BestFeatures(data = data, treat = "treat", outcome = "y", 
+                         predictors = colnames(data[,3:12]))
 features
 
 }
