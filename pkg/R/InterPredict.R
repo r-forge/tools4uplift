@@ -1,4 +1,18 @@
-InterPredict <- function(data, treat, outcome, model, nb.group=10, plotit=FALSE){
+InterPredict <- function(data, treat, outcome, model, nb.group = 10, plotit = FALSE){
+  
+  # Predictions from an interaction estimator.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   treat: name of a binary (numeric) vector representing the treatment 
+  #          assignment (coded as 0/1).
+  #   outcome: name of a binary response (numeric) vector (coded as 0/1).
+  #   model: a model that must be the output of InterUplift() function.
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   The predictions and performance of an interaction estimator model.
+  
   
   data1 <- data; data1[[treat]] <- 1
   pr.y1_ct1 <- predict(model, newdata=data1, type="response")
@@ -17,3 +31,5 @@ InterPredict <- function(data, treat, outcome, model, nb.group=10, plotit=FALSE)
   
   return(list(data, qini))
 }
+
+# END FUN

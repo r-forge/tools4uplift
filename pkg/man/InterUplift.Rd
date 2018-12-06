@@ -8,7 +8,7 @@ Interaction estimator
 Fit the interaction uplift model estimator.
 }
 \usage{
-InterUplift(data, treat, outcome, predictors, input = "p")
+InterUplift(data, treat, outcome, predictors, input = "all")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,7 +25,7 @@ name of a binary response (numeric) vector (coded as 0/1).
 a vector of names representing the explanatory variables to include in the model.
 }
   \item{input}{
-an option for \code{predictors} argument. If \code{"p"} (default), the model assumes that the model has to create the interaction of all varibles with \code{treat}. If \code{"bf"}, the model assumes that the \code{predictors} vector is the output of the \code{BestFeatures} function.
+an option for \code{predictors} argument. If \code{"all"} (default), the model assumes that the model has to create the interaction of all varibles with \code{treat}. If \code{"best"}, the model assumes that the \code{predictors} vector is the output of the \code{BestFeatures} function.
 }
 }
 \value{

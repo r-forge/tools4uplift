@@ -1,8 +1,22 @@
 BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100, 
                          nb.group = 10, validation = FALSE, p = 0.3, value = FALSE){
 
-  #Here, all variables must be continuous. Before using this function, change 
-  #categorical variables to dummies.
+  # Feature selection for the interaction estimator.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   treat: name of a binary (numeric) vector representing the treatment 
+  #          assignment (coded as 0/1).
+  #   outcome: name of a binary response (numeric) vector (coded as 0/1).
+  #   predictors: a vector of names representing the predictors to consider in the model.
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   The best features for the interaction estimator.
+  
+  
+  # All variables must be continuous. Before using this function, change 
+  # categorical variables to dummies.
   inter.formula <- c()
   for (k in seq(1:length(predictors))) {
     inter.formula <- paste(inter.formula, paste(predictors[k], treat, sep = ":"), sep="+")
@@ -10,7 +24,8 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
   formula <- as.formula(paste(paste(outcome, "~", treat, "+"), paste(predictors, collapse="+"), inter.formula))
   
   
-  #Split data between train (data) and valid using SplitUplift
+  # Cross-validation
+  # Split data between train (data) and valid using SplitUplift() function
   if (validation == TRUE) {
     split <- SplitUplift(data, 1-p, c(treat, outcome))
     data <- split[[1]]
@@ -18,21 +33,21 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
   }
   
   path <- LassoPath(data, formula, nb.lambda)
-  #Keep paths of dimension > 0
+  # Keep paths of dimension > 0
   path <- path[path[, "dimension"] > 0, ]
   
   lambda.qini <- c()
   
   for (k in 1:nrow(path)) {
     features <- path[k, -c(1, 2)]
-    #Keep features with positive estimators only
+    # Keep features with positive estimators only
     features <- features[features != 0]
     lambda.formula <- paste(paste(colnames(model.frame(formula, data))[1], "~ "), paste(names(features), collapse=" + "))
     
-    #Fit the logistic regression model with selected features only
+    # Fit the logistic regression model with selected features only
     lambda.model <- glm(lambda.formula, family=binomial(link="logit"), data)
     
-    #Compute the qini coefficient and add to the list
+    # Compute the qini coefficient and add to the list
     if (validation == FALSE){
     lambda.qini[k] <- InterPredict(data, treat, colnames(model.frame(formula, data))[1], lambda.model, nb.group)[[2]]
     }
@@ -42,10 +57,10 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
   }
   
   best.model <- cbind(path[, c(1, 2)], lambda.qini)
-  #Take the model that maximizes the qini coefficient
+  # Take the model that maximizes the qini coefficient
   best.model <- best.model[which.max(best.model[, "lambda.qini"]), ]
   
-  #We also need to know which variables were selected
+  # We also need to know which variables were selected
   best.features <- path[path[, "lambda"]==best.model["lambda"], -c(1, 2)]
   best.features <- names(best.features[best.features != 0])
   
@@ -53,3 +68,5 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
   
   return(best.features)   
 }
+
+# END FUN

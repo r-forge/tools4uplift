@@ -3,6 +3,19 @@ BinUpliftEnhanced <- function(data, treat, outcome, var.list, n.split = 10,
                               ylab = "Uplift", title = "Binning Results", 
                               color = NULL){
   
+  # Univariate categorization - augmented data.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   treat: name of a binary (numeric) vector representing the treatment 
+  #          assignment (coded as 0/1).
+  #   outcome: name of a binary response (numeric) vector (coded as 0/1).
+  #   var.list: a vector of names representing the explanatory variables to categorize.
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   The augmented data frame with categorized variables.
+  
   for (var_name in var.list) {
     # For now no gestion of categorical variables
       print(var_name)
@@ -24,3 +37,5 @@ BinUpliftEnhanced <- function(data, treat, outcome, var.list, n.split = 10,
   }
   return(data)
 }
+
+# END FUN

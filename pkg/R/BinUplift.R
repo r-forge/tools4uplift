@@ -2,11 +2,26 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
                       n.min = 30, ylim = NULL, ylab = "Uplift",
                       title = "Binning Results", color = NULL){
   
+  # Univariate categorization.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   treat: name of a binary (numeric) vector representing the treatment 
+  #          assignment (coded as 0/1).
+  #   outcome: name of a binary response (numeric) vector (coded as 0/1).
+  #   x: name of the explanatory variable to categorize.
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   The binned version of variable x.
+  
+  
   if (is.null(color)==TRUE) {
     color <- rgb(097, 154, 188, 255, maxColorValue = 255)
   }
   
-  #First, we need to check that the parameters are well filled and we create
+  # Error handling
+  # First, we need to check that the parameters are well filled and we create
   
   if (n.split <= 0 ) {
     stop("Number of splits must be positive")
@@ -25,11 +40,11 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     warning("Independent variable contains missing values: remove the observations and proceed")
   }
   
-  #Keep complete cases only for the variable to categorize
+  # Keep complete cases only for the variable to categorize
   data <- data[is.na(data[[x]])==FALSE,]
   
-  #Second, we need to define the subfunctions that create the splits and
-  #choose the best split based on z-test
+  # Second, we need to define the subfunctions that create the splits and
+  # choose the best split based on z-test
   
   BinUpliftStump <- function(data, outcome, treat, x, n.split){
   
@@ -53,27 +68,27 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
       left <- data[index.l,]
       right <- data[index.r,]
       
-      #uplift in left node
-      splits[i, 2] <- sum(left[[treat]]==1) #n.lt
-      splits[i, 3] <- sum(left[[treat]]==0) #n.lc
-      splits[i, 4] <- sum(left[[treat]]==1 & left[[outcome]]==1)/splits[i, 2] #p.lt
-      splits[i, 5] <- sum(left[[treat]]==0 & left[[outcome]]==1)/splits[i, 3] #p.lc
+      # uplift in left node
+      splits[i, 2] <- sum(left[[treat]]==1)  # n.lt
+      splits[i, 3] <- sum(left[[treat]]==0)  # n.lc
+      splits[i, 4] <- sum(left[[treat]]==1 & left[[outcome]]==1)/splits[i, 2]  # p.lt
+      splits[i, 5] <- sum(left[[treat]]==0 & left[[outcome]]==1)/splits[i, 3]  # p.lc
       
-      splits[i, 6] <- splits[i, 4] - splits[i, 5] #u.l
+      splits[i, 6] <- splits[i, 4] - splits[i, 5]  # u.l
       
-      #uplift in right node
-      splits[i, 7] <- sum(right[[treat]]==1) #n.rt
-      splits[i, 8] <- sum(right[[treat]]==0) #n.rc
-      splits[i, 9] <- sum(right[[treat]]==1 & right[[outcome]]==1)/splits[i, 7] #p.rt
-      splits[i, 10] <- sum(right[[treat]]==0 & right[[outcome]]==1)/splits[i, 8] #p.rc
+      # uplift in right node
+      splits[i, 7] <- sum(right[[treat]]==1)  # n.rt
+      splits[i, 8] <- sum(right[[treat]]==0)  # n.rc
+      splits[i, 9] <- sum(right[[treat]]==1 & right[[outcome]]==1)/splits[i, 7]  # p.rt
+      splits[i, 10] <- sum(right[[treat]]==0 & right[[outcome]]==1)/splits[i, 8]  # p.rc
       
-      splits[i, 11] <- splits[i, 9] - splits[i, 10] #u.r
+      splits[i, 11] <- splits[i, 9] - splits[i, 10]  # u.r
       
-      splits[i, 12] <- abs(splits[i, 6] - splits[i, 11]) #diff
+      splits[i, 12] <- abs(splits[i, 6] - splits[i, 11])  # diff
       
       #probabilities of success in treatment and control groups
-      splits[i, 13] <- sum(data[[treat]]==1 & data[[outcome]]==1)/sum(data[[treat]]==1) #p.t
-      splits[i, 14] <- sum(data[[treat]]==0 & data[[outcome]]==1)/sum(data[[treat]]==0) #p.c
+      splits[i, 13] <- sum(data[[treat]]==1 & data[[outcome]]==1)/sum(data[[treat]]==1)  # p.t
+      splits[i, 14] <- sum(data[[treat]]==0 & data[[outcome]]==1)/sum(data[[treat]]==0)  # p.c
       
       
     }
@@ -90,13 +105,7 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     test.splits <- data.frame(splits)
     test.splits$z.num <- (test.splits$p.lt - test.splits$p.lc - test.splits$p.rt + test.splits$p.rc)
     
-    #test.splits$z.den <- sqrt(
-    #                          (test.splits$p.lt*(1-test.splits$p.lt))/test.splits$n.lt +
-    #                          (test.splits$p.lc*(1-test.splits$p.lc))/test.splits$n.lc +
-    #                          (test.splits$p.rt*(1-test.splits$p.rt))/test.splits$n.rt +
-    #                          (test.splits$p.rc*(1-test.splits$p.rc))/test.splits$n.rc
-    #                          )
-    
+    # We need the number of observations per group for the variance
     N_T <- test.splits$n.lt + test.splits$n.rt
     N_C <- test.splits$n.lc + test.splits$n.rc
     
@@ -119,8 +128,8 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
   }
   
   
-  #Now we can call the recursive partitionning subfunction that performs the
-  #splits based on the two (2) previous subfunctions
+  # Now we can call the recursive partitionning subfunction that performs the
+  # splits based on the two (2) previous subfunctions
   
   BinUpliftTree <- function(data, outcome, treat, x, n.split, alpha, n.min){   
     
@@ -133,11 +142,11 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
       
     } else if (best$sign == 1) {
       
-      #printing the cuts in order
+      # printing the cuts in order
       print(paste("The variable", x, "has been cut at:"))
       print(best$x.cut)
       
-      #the x.cuts at the left and at the right of the x.cut optimal 
+      # the x.cuts at the left and at the right of the x.cut optimal 
       l.cuts <- best$x.pos - 1
       r.cuts <- n.split-best$x.pos + 1
       
@@ -153,7 +162,7 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
       l.best <- BinUpliftTest(l.stump, alpha, n.min)
       r.best <- BinUpliftTest(r.stump, alpha, n.min)
       
-      #possible paths 
+      # possible paths 
       if (l.best$sign == 0 || nrow(l.best) == 0) {
         if (r.best$sign == 0 || nrow(r.best) == 0) {
           return (best)
@@ -170,11 +179,11 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     }
   }
   
-  #Now, if the variable we want to bin is not continuous, we need to change 
-  #it to a continuous one to be able to split
-  #We sort the categories by uplift and create an ordinal variable 1,2,...,K
-  #where K is the number of the categories. Then, we can split that variable
-  #with n.split=K-1
+  # Now, if the variable we want to bin is not continuous, we need to change 
+  # it to a continuous one to be able to split
+  # We sort the categories by uplift and create an ordinal variable 1,2,...,K
+  # where K is the number of the categories. Then, we can split that variable
+  # with n.split=K-1
   
   BinUpliftCatRank <- function(data, outcome, treat, x){
     
@@ -186,13 +195,13 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
       
       splits[i, 1] <- levels(data[[x]])[[i]]
       
-      #uplift in each category
-      splits[i, 2] <- sum(data[[treat]]==1 & data[[x]]== splits[i, 1]) #n.t
-      splits[i, 3] <- sum(data[[treat]]==0 & data[[x]]== splits[i, 1]) #n.c
-      splits[i, 4] <- sum(data[[treat]]==1 & data[[x]]== splits[i, 1] & data[[outcome]]==1)/splits[i, 2] #p.t
-      splits[i, 5] <- sum(data[[treat]]==0 & data[[x]]== splits[i, 1] & data[[outcome]]==1)/splits[i, 3] #p.c
+      # uplift in each category
+      splits[i, 2] <- sum(data[[treat]]==1 & data[[x]]== splits[i, 1])  # n.t
+      splits[i, 3] <- sum(data[[treat]]==0 & data[[x]]== splits[i, 1])  # n.c
+      splits[i, 4] <- sum(data[[treat]]==1 & data[[x]]== splits[i, 1] & data[[outcome]]==1)/splits[i, 2]  # p.t
+      splits[i, 5] <- sum(data[[treat]]==0 & data[[x]]== splits[i, 1] & data[[outcome]]==1)/splits[i, 3]  # p.c
       
-      splits[i, 6] <- splits[i, 4] - splits[i, 5] #u
+      splits[i, 6] <- splits[i, 4] - splits[i, 5]  # u
     }
     
     splits$cat.rank <- rank(splits$u, ties.method = "random")
@@ -210,15 +219,15 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     
   }
   
-  #Here, we define the functions for visualization
-  #Optional, a sas code output could help to copy paste and perform the binning directly on sas
+  # Here, we define the functions for visualization
+  # Optional, a sas code output could help to copy paste and perform the binning directly on sas
   
   BinUpliftPlot <- function(data, out.tree, x, ylim = NULL, ylab = "Uplift", color, title){
   
     final.cuts <- c(min(data[[x]]), sort(out.tree$x.cut), max(data[[x]]))
     data$x.cat <- cut(data[[x]], unique(final.cuts), include.lowest = TRUE, right = FALSE, dig.lab = 5)
     
-    #Create descriptive statistics associated with the binning
+    # Create descriptive statistics associated with the binning
     x.cat.stats <- matrix(data = NA, nrow = 6, ncol = length(unique(final.cuts))-1)
     rownames(x.cat.stats) <- c("n", "n.t", "n.c", "p1.t", "p1.c", "uplift")
     colnames(x.cat.stats) <- names(table(data$x.cat))
@@ -226,11 +235,11 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     for(i in 1:length(unique(final.cuts))-1){ 
       
       x.cat.stats[1,] <- as.integer(table(data$x.cat))
-      x.cat.stats[2, i] <- as.integer(sum(data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] )) #n.t
-      x.cat.stats[3, i] <- as.integer(sum(data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] )) #n.c
-      x.cat.stats[4, i] <- sum(data[[outcome]]==1 & data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[2, i] #p1.t
-      x.cat.stats[5, i] <- sum(data[[outcome]]==1 & data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[3, i] #p1.c
-      x.cat.stats[6, i] <- x.cat.stats[4, i] - x.cat.stats[5, i] #uplift
+      x.cat.stats[2, i] <- as.integer(sum(data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] ))  # n.t
+      x.cat.stats[3, i] <- as.integer(sum(data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] ))  # n.c
+      x.cat.stats[4, i] <- sum(data[[outcome]]==1 & data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[2, i]  # p1.t
+      x.cat.stats[5, i] <- sum(data[[outcome]]==1 & data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[3, i]  # p1.c
+      x.cat.stats[6, i] <- x.cat.stats[4, i] - x.cat.stats[5, i]  # uplift
     }
     
     lines <- length(unique(final.cuts)) - 1
@@ -248,13 +257,13 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     
   }
   
-  #For non continuous variables
+  # For non continuous variables
   BinUpliftPlotC <- function(data, out.tree, out.link, x, ylim = NULL, ylab = "Uplift", color, title){
     
     final.cuts <- c(min(data[[x]]), sort(out.tree$x.cut), max(data[[x]]))
     data$x.cat <- cut(data[[x]], unique(final.cuts), include.lowest = TRUE, right = FALSE, dig.lab = 0)
     
-    #Create descriptive statistics associated with the binning
+    # Create descriptive statistics associated with the binning
     
     x.cat.stats <- matrix(data = NA, nrow = 6, ncol = length(unique(final.cuts))-1)
     rownames(x.cat.stats) <- c("n", "n.t", "n.c", "p1.t", "p1.c", "uplift")
@@ -263,11 +272,11 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
     for(i in 1:length(unique(final.cuts))-1){ 
       
       x.cat.stats[1,] <- as.integer(table(data$x.cat))
-      x.cat.stats[2, i] <- as.integer(sum(data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] )) #n.t
-      x.cat.stats[3, i] <- as.integer(sum(data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] )) #n.c
-      x.cat.stats[4, i] <- sum(data[[outcome]]==1 & data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[2, i] #p1.t
-      x.cat.stats[5, i] <- sum(data[[outcome]]==1 & data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[3, i] #p1.c
-      x.cat.stats[6, i] <- x.cat.stats[4, i] - x.cat.stats[5, i] #uplift
+      x.cat.stats[2, i] <- as.integer(sum(data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] ))  # n.t
+      x.cat.stats[3, i] <- as.integer(sum(data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] ))  # n.c
+      x.cat.stats[4, i] <- sum(data[[outcome]]==1 & data[[treat]]==1 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[2, i]  # p1.t
+      x.cat.stats[5, i] <- sum(data[[outcome]]==1 & data[[treat]]==0 & data$x.cat == names(table(data$x.cat))[i] )/ x.cat.stats[3, i]  # p1.c
+      x.cat.stats[6, i] <- x.cat.stats[4, i] - x.cat.stats[5, i]  # uplift
     }
     
     
@@ -288,8 +297,8 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
   }
   
   
-  #Finally, we can grow the tree and return it as out.tree depending on nature of the 
-  #variable we want to bin
+  # Finally, we can grow the tree and return it as out.tree depending on nature of the 
+  # variable we want to bin
   
   if (is.factor(data[[x]])==TRUE) {
     out.cat <- BinUpliftCatRank(data, outcome, treat, x)[[2]]
@@ -318,3 +327,5 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
   }
   
 }
+
+# END FUN
