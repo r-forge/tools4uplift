@@ -13,7 +13,7 @@ GenerateUplift(object, nbobs, dimension)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
-a scene of class as that created by the function \code{generateScene}.
+a scene of class as that created by the function \code{GenerateScene}.
 }
   \item{nbobs}{
 number of observations.

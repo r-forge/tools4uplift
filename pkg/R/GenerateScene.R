@@ -8,7 +8,22 @@ GenerateScene <- function(space_dimension=2,
                         Nb_point=c(20,10,20),
                         plotit=TRUE){
   
-  #Main effet definition
+  # Simulations of scenarios for treatment effects.
+  #
+  # Args:
+  #   space_dimension: space dimension.
+  #   Principal_effect: average principal effect.
+  #   Control_effect_positive: average positive effect of control group.
+  #   Control_effect_negative: average negative effect of control group.
+  #   Nb_point: number of points per effect (principal, positive, negative) 
+  #             in order to generate the uplift functions.
+  #
+  # Returns:
+  #   The propensities for control and treatment groups.
+  
+  
+  
+  # Main effet definition
   Principal_effect_max = Principal_effect[2]
   Principal_effect_min = Principal_effect[1]
   Principal_std_max = Principal_std[[2]]
@@ -26,12 +41,12 @@ GenerateScene <- function(space_dimension=2,
   Control_std_negative_max = Control_std_negative[[2]]
   Control_std_negative_min = Control_std_negative[[1]]
   
-  #Define the number of point for each generating set
+  # Define the number of point for each generating set
   Nb_point_principale = Nb_point[[1]]
   Nb_point_control_positive = Nb_point[[2]]
   Nb_point_control_negative = Nb_point[[3]]
   
-  #Genrating point uniformly in the compact square [-1,1]^dimension
+  # Genrating point uniformly in the compact square [-1,1]^dimension
   X_Principal = data.frame(replicate(space_dimension, runif(Nb_point_principale,-1,1)))
   X_Control_positive   = data.frame(replicate(space_dimension, runif(Nb_point_control_positive,-1,1)))
   X_Control_negative   = data.frame(replicate(space_dimension, runif(Nb_point_control_negative,-1,1)))
@@ -46,7 +61,7 @@ GenerateScene <- function(space_dimension=2,
   Vect_control_negative_std    = runif(Nb_point_control_negative, Control_std_negative_min,Control_std_negative_max)
   
   
-  #parameter meant to control for each point the weight of influence of each variable
+  # Parameter meant to control for each point the weight of influence of each variable
   distortion_principal = data.frame(replicate(space_dimension,runif(Nb_point_principale,0.001,1)))
   distortion_positive = data.frame(replicate(space_dimension,runif(Nb_point_principale,0.001,1)))
   distortion_negative = data.frame(replicate(space_dimension,runif(Nb_point_principale,0.001,1)))
@@ -130,4 +145,4 @@ GenerateScene <- function(space_dimension=2,
   
 }
 
-#END FUN
+# END FUN

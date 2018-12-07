@@ -1,5 +1,18 @@
 QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   
+  # Computes the performance of an uplift estimator.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   treat: name of a binary (numeric) vector representing the treatment 
+  #          assignment (coded as 0/1).
+  #   outcome: name of a binary response (numeric) vector (coded as 0/1).
+  #   predictors: a vector of names representing the predictors to consider in the model.
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   The performance of an uplift estimator in a table.
+  
   data$rank <- 0
   data$rank = rank(-data[[prediction]], ties.method = "min") / nrow(data)
   
@@ -12,7 +25,7 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   colnames(dataResults) <- c("cum_per", "T_Y1", "T_n", "C_Y1", 
                              "C_n", "incremental_Y1", "inc_uplift", "uplift")
   
-  #incremental observed uplift
+  # Incremental observed uplift
   for(i in 1:nb.group){
     subset <- data[data$group <= i, ]
     dataResults[i,1] <- i/10
@@ -25,7 +38,7 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   dataResults[,7] <- dataResults[,6]/dataResults[nb.group,3]*100
   
   
-  #observed uplift in each group
+  # Observed uplift in each group
   for (i in 1:nb.group){
     subset <- data[data$group == i, ]
     dataResults[i,8] <- sum(subset[[treat]] == 1 & subset[[outcome]] == 1) / sum(subset[[treat]] == 1) -  
@@ -34,3 +47,5 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   
   return(dataResults)
 }
+
+# END FUN

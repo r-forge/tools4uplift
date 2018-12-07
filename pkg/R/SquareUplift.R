@@ -2,6 +2,23 @@ SquareUplift <- function(data, var1, var2, treat, outcome, n.split = 10,
                          n.min = 1, categorize = TRUE, nb.group = 3, 
                          plotit = TRUE, nb.col = 20){
   
+  # Bivariate categorization.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   var1: name of the first explanatory variable to categorize.
+  #   var2: name of the second explanatory variable to categorize.
+  #   treat: name of a binary (numeric) vector representing the treatment 
+  #          assignment (coded as 0/1).
+  #   outcome: name of a binary response (numeric) vector (coded as 0/1).
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   An augmented dataset with Uplift_var1_var2 variable representing a predicted 
+  #   uplift for each observation based on the square it belongs to.
+  
+  
+  # Error handling
   if (n.split <= 1) stop("n.split must be > 1")
   if (n.split %% 1 != 0) stop("n.split must be an integer")
   
@@ -14,7 +31,7 @@ SquareUplift <- function(data, var1, var2, treat, outcome, n.split = 10,
   if (nb.col < n.split) warning("nb.col should be greater than n.split for better visualization")
   if (nb.col %% 1 != 0) stop("nb.col must be an integer")
   
-  #Initalize grid of uplifts for training set
+  # Initalize grid of uplifts for training set
   range_var1 <- ceiling(max(data[, paste(var1)])) - floor(min(data[, paste(var1)]))
   step1 <- range_var1 / n.split
   seq_col <- seq(floor(min(data[, paste(var1)])), ceiling(max(data[, paste(var1)])), step1)
@@ -52,8 +69,8 @@ SquareUplift <- function(data, var1, var2, treat, outcome, n.split = 10,
     }
   }
   
-  #for the observations that were not scored, i.e. uplift=NA, impute the average
-  #uplift of all NA
+  # For the observations that were not scored, i.e. uplift=NA, impute the average
+  # uplift of all NA
   
   index.naT <- is.na(data[, biprediction])==TRUE
   
@@ -63,23 +80,23 @@ SquareUplift <- function(data, var1, var2, treat, outcome, n.split = 10,
                                    sum(data[index.naT, paste(treat)] == 0)
   
   
-  #Create the categorical version of var1 and var2
+  # Create the categorical version of var1 and var2
   if (categorize) {
     
     data.rank = rank(-data[, biprediction], ties.method = "min") / nrow(data)
     
     bicategorize <- paste0("Cat_",var1,"_",var2)
-    #data[, bicategorize] <- 0
+    # data[, bicategorize] <- 0
     for(i in 1:nb.group){
       data[data.rank > (i-1)/nb.group & data.rank <= i/nb.group, bicategorize] <- i
     }
   }
-  #Plot the uplift heat map var1 and var2
+  # Plot the uplift heat map var1 and var2
   if (plotit) {  
-    #define the colors for the heat map
+    # Define the colors for the heat map
     colfunc <- colorRampPalette(c("red", "yellow", "springgreen", "royalblue"))
     
-    #reverse and transpose the grid in order to get the actual heat map with image function
+    # Reverse and transpose the grid in order to get the actual heat map with image function
     rev_grid <- apply(grid, 2, rev)
     par(mfrow = c(1, 2))
     
@@ -94,3 +111,5 @@ SquareUplift <- function(data, var1, var2, treat, outcome, n.split = 10,
  
  return(data)
 }
+
+# END FUN

@@ -1,5 +1,13 @@
 QiniCurve <- function(x, title = "Model Performance: Qini Curve", color = NULL){
   
+  # Plots the Qini curve.
+  #
+  # Args:
+  #   x: a table that must be the output of QiniTable() function.
+  #
+  # Returns:
+  #   The Qini curve.
+  
   
   if (is.null(color)==TRUE) {
     color <- rgb(097, 154, 188, 255, maxColorValue = 255)
@@ -18,3 +26,5 @@ QiniCurve <- function(x, title = "Model Performance: Qini Curve", color = NULL){
   )
   abline(a = 0, b = x[nrow(x), 7]/100, col = cGrey, lwd = 2.0)
 }
+
+# END FUN

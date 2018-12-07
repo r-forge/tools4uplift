@@ -1,4 +1,15 @@
 LassoPath <- function(data, formula, nb.lambda=100){
+  
+  # LASSO path for penalized logistic regression.
+  #
+  # Args:
+  #   data: a data frame containing the treatment, the outcome and the predictors.
+  #   formula: an object of class "formula" (or one that can be coerced to that class): 
+  #            a symbolic description of the model to be fitted.
+  #   ... and default parameters.
+  #
+  # Returns:
+  #   A dataframe containing the coefficients values and the number of nonzeros coefficients.
 
   X <- model.matrix(formula, data)
   y <- model.frame(formula,data)[,1]
@@ -14,3 +25,5 @@ LassoPath <- function(data, formula, nb.lambda=100){
   
   return(path)  
 }
+
+# END FUN
