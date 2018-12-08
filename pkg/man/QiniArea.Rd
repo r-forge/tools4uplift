@@ -1,6 +1,5 @@
 \name{QiniArea}
 \alias{QiniArea}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Qini coefficient
 }
@@ -10,7 +9,6 @@ Computes the area under the Qini curve.
 \usage{
 QiniArea(x)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
 a table that must be the output of \code{QiniTable} function.
@@ -20,7 +18,9 @@ a table that must be the output of \code{QiniTable} function.
 the Qini coefficient
 }
 \references{
-%% ~put references to the literature/web site here ~
+Radcliffe, N. and Surry, P. (2011). Real-World Uplift Modelling with Significance-Based Uplift Trees. Portrait Technical Report, TR-2011-1.
+
+Radcliffe, N. (2007). Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, An Annual Publication from the Direct Marketing Association Analytics Council, pages 14-21.
 }
 \author{
 Mouloud Belbahri
@@ -43,7 +43,5 @@ perf <- QiniTable(data = square1, treat = "treat",
 QiniArea(perf)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{Qini}
+\keyword{performance}

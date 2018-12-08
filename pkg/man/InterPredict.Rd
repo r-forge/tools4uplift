@@ -1,6 +1,5 @@
 \name{InterPredict}
 \alias{InterPredict}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Predictions from an interaction estimator
 }
@@ -10,7 +9,6 @@ Predictions from the interaction uplift model estimator with associated model pe
 \usage{
 InterPredict(data, treat, outcome, model, nb.group = 10, plotit = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 a data frame containing the treatment, the outcome and the predictors.
@@ -36,7 +34,7 @@ if \code{TRUE}, a \code{QiniCurve} and \code{QiniBarPlot} are returned.
 \item{qini }{a Qini Coefficient}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Lo VSY (2002). The true lift model: a novel data mining approach to response modeling indatabase marketing. ACM SIGKDD Explorations Newsletter, 4(2), 78–86.
 }
 \author{
 Mouloud Belbahri
@@ -55,7 +53,5 @@ fit <- InterUplift(train, "treat", "y", train[,3:12])
 pred <- InterPredict(train, "treat", "y", model = fit, nb.group = 5)[[1]]
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{prediction}
+\keyword{uplift}

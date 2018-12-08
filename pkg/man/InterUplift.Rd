@@ -1,6 +1,5 @@
 \name{InterUplift}
 \alias{InterUplift}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Interaction estimator
 }
@@ -10,7 +9,6 @@ Fit the interaction uplift model estimator.
 \usage{
 InterUplift(data, treat, outcome, predictors, input = "all")
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 a data frame containing the treatment, the outcome and the predictors.
@@ -32,7 +30,7 @@ an option for \code{predictors} argument. If \code{"all"} (default), the model a
 an interaction model
 }
 \references{
-%% ~put references to the literature/web site here ~
+Lo VSY (2002). The true lift model: a novel data mining approach to response modeling indatabase marketing. ACM SIGKDD Explorations Newsletter, 4(2), 78–86.
 }
 \author{
 Mouloud Belbahri
@@ -49,7 +47,4 @@ train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 fit <- InterUplift(train, "treat", "y", train[,3:12])
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{uplift}

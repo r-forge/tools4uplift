@@ -1,6 +1,5 @@
 \name{SplitUplift}
 \alias{SplitUplift}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Split data with respect to uplift distribution
 }
@@ -10,7 +9,6 @@ Split a dataset into training and validation subsets with respect to the uplift 
 \usage{
 SplitUplift(data, p, group)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 a data frame of interest that contains at least the response and the treatment variables.
@@ -26,9 +24,6 @@ Your grouping variables. Generally, for uplift modelling, this should be a vecto
 \item{train}{a training data frame of $p$ percent}
 \item{valid}{a validation data frame of $1-p$ percent}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mouloud Belbahri
 }
@@ -43,7 +38,4 @@ train <- split[[1]]
 valid <- split[[2]]
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{sampling}

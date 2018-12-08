@@ -1,6 +1,5 @@
 \name{QiniBarPlot}
 \alias{QiniBarPlot}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Uplift barplot
 }
@@ -10,7 +9,6 @@ Barplot of observed uplift with respect to predicted uplift sorted from the high
 \usage{
 QiniBarPlot(x, title = "Model Performance: Uplift by Group", color = NULL)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
 a table that must be the output of \code{QiniTable} function.
@@ -24,9 +22,6 @@ color of the barplot.
 }
 \value{
 a barplot
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Mouloud Belbahri
@@ -49,7 +44,5 @@ perf <- QiniTable(data = square1, treat = "treat",
 QiniBarPlot(perf)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{Qini}
+\keyword{performance}

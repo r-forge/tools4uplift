@@ -48,11 +48,7 @@ a color for the plot. If ommitted, the color will be set by default to a custom 
 }
 }
 \value{
-%%  ~Describe the value returned
 an augmented data frame with categorized variables. If a variable is enhanced, the function returns automatically a barplot.
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
 }
 \author{
 Olivier Gandouet
@@ -69,6 +65,4 @@ train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 train.enhanced <- BinUpliftEnhanced(data = train, treat = "treat", outcome = "y", 
                                     var.list = colnames(train[,3:12]))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{tree}% use one of  RShowDoc("KEYWORDS")
+\keyword{tree}

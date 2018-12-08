@@ -1,6 +1,5 @@
 \name{LassoPath}
 \alias{LassoPath}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 LASSO path for penalized logistic regression
 }
@@ -10,7 +9,6 @@ Fit an interaction uplift model via penalized maximum likelihood. The regulariza
 \usage{
 LassoPath(data, formula, nb.lambda = 100)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 a data frame containing the treatment, the outcome and the predictors.
@@ -26,7 +24,7 @@ the number of lambda values - Default is 100.
 a dataframe containing the coefficients values and the number of nonzeros coefficients for different values of lambda.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Friedman, J., Hastie, T. and Tibshirani, R. (2008) Regularization Paths for Generalized Linear Models via Coordinate Descent, https://web.stanford.edu/~hastie/Papers/glmnet.pdf, Journal of Statistical Software, Vol. 33(1), 1-22 Feb 2010, http://www.jstatsoft.org/v33/i01/
 }
 \author{
 Mouloud Belbahri
@@ -37,7 +35,4 @@ Mouloud Belbahri
 \examples{
 #See glmnet() from library("glmnet") for more information
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{LASSO}

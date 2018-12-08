@@ -1,7 +1,7 @@
 \name{SquareUplift}
 \alias{SquareUplift}
 \title{
-Bivariate discretization
+Bivariate categorization
 }
 \description{
 A non-parametric heat map representing the observed uplift in squares that explore a bivariate dimension space. The function also predicts the individual uplift based on the heatmap. 
@@ -49,9 +49,6 @@ number of colors for the heatmap. From \code{royalblue} to \code{red}. Default i
 \value{
 returns an augmented dataset with \code{Uplift_var1_var2} variable representing a predicted uplift for each observation based on the square it belongs to. By default, the function creates also a categorical variable \code{Cat_var1_var2} based on the predicted uplift and plots a heat map of observed uplift.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mouloud Belbahri
 }
@@ -65,3 +62,4 @@ square <- SquareUplift(train, "X1", "X2", "treat", "y")
 
 }
 \keyword{heatmap}
+\keyword{uplift}

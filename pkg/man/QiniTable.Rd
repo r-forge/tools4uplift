@@ -1,6 +1,5 @@
 \name{QiniTable}
 \alias{QiniTable}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Performance of an uplift estimator
 }
@@ -10,7 +9,6 @@ Table of performance of an uplift model. This table is used in order to vizualis
 \usage{
 QiniTable(data, treat, outcome, prediction, nb.group = 10)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 a data frame containing the response, the treatment and predicted uplift.
@@ -32,7 +30,9 @@ number of groups of equal observations in which to partition the data set to sho
 a table with descriptive statistics related to an uplift model estimator.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Radcliffe, N. and Surry, P. (2011). Real-World Uplift Modelling with Significance-Based Uplift Trees. Portrait Technical Report, TR-2011-1.
+
+Radcliffe, N. (2007). Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, An Annual Publication from the Direct Marketing Association Analytics Council, pages 14-21.
 }
 \author{
 Mouloud Belbahri
@@ -54,7 +54,5 @@ perf <- QiniTable(data = square1, treat = "treat",
                   
 perf
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{Qini}
+\keyword{performance}

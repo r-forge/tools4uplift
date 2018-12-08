@@ -1,6 +1,5 @@
 \name{GenerateScene}
 \alias{GenerateScene}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Simulations of scenarios for treatment effects
 }
@@ -18,7 +17,6 @@ GenerateScene(space_dimension = 2,
               Nb_point = c(20, 10, 20), 
               plotit = TRUE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{space_dimension}{
 space dimension.
@@ -53,9 +51,6 @@ if \code{TRUE}, plot the functions.
 \item{Control_propensity}{control group propensity function}
 \item{space_dimension}{space dimension}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Olivier Gandouet
 }
@@ -65,7 +60,5 @@ library(tools4uplift)
 scene <- GenerateScene(plotit = FALSE)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{simulation}
+\keyword{uplift}
