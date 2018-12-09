@@ -45,9 +45,6 @@ The regularization parameter is chosen based on the interaction uplift model tha
 \value{
 a vector of names representing the selected best features from the penalized logistic regression.
 }
-\references{
-Tibshirani R (1996). Regression shrinkage and selection via the lasso. Journal of the Royal Statistical Society. Series B (Methodological), pp. 267–288.
-}
 \author{
 Mouloud Belbahri
 }

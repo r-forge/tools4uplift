@@ -29,9 +29,6 @@ an option for \code{predictors} argument. If \code{"all"} (default), the model a
 \value{
 an interaction model
 }
-\references{
-Lo VSY (2002). The true lift model: a novel data mining approach to response modeling indatabase marketing. ACM SIGKDD Explorations Newsletter, 4(2), 78–86.
-}
 \author{
 Mouloud Belbahri
 }

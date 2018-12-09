@@ -33,9 +33,6 @@ if \code{TRUE}, a \code{QiniCurve} and \code{QiniBarPlot} are returned.
 \item{data}{a data frame augmented with the predicted uplift}
 \item{qini }{a Qini Coefficient}
 }
-\references{
-Lo VSY (2002). The true lift model: a novel data mining approach to response modeling indatabase marketing. ACM SIGKDD Explorations Newsletter, 4(2), 78–86.
-}
 \author{
 Mouloud Belbahri
 }

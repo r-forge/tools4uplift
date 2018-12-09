@@ -18,7 +18,4 @@ The DESCRIPTION file:
 \author{
 Mouloud Belbahri <mouloud.belbahri@gmail.com>,  Olivier Gandouet, Alejandro Murua, Vahid Partovi Nia
 }
-\references{
-
-}
-\keyword{ package }
+\keyword{uplift}
