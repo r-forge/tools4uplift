@@ -42,8 +42,7 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+train <- data("SimUplift")
 
 fit <- InterUplift(train, "treat", "y", train[,3:12])
 

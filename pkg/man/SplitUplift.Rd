@@ -30,8 +30,7 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+train <- data("SimUplift")
 
 split <- SplitUplift(train, 0.8, c("treat", "y"))
 train <- split[[1]]

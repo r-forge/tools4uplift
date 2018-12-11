@@ -59,8 +59,7 @@ Olivier Gandouet
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+train <- data("SimUplift")
 
 train.enhanced <- BinUpliftEnhanced(data = train, treat = "treat", outcome = "y", 
                                     var.list = colnames(train[,3:12]))

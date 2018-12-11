@@ -51,8 +51,7 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-data <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data <- data("SimUplift")
 
 features <- BestFeatures(data = data, treat = "treat", outcome = "y", 
                          predictors = colnames(data[,3:12]))

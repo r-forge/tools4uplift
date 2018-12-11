@@ -61,8 +61,7 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+train <- data("SimUplift")
 
 binX1 <- BinUplift(data = train, treat = "treat", outcome = "y", x = "X1", 
                   alpha = 0.10, n.min = 3, title = "Binning for X1")

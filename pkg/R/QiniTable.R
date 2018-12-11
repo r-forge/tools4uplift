@@ -7,12 +7,19 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   #   treat: name of a binary (numeric) vector representing the treatment 
   #          assignment (coded as 0/1).
   #   outcome: name of a binary response (numeric) vector (coded as 0/1).
-  #   predictors: a vector of names representing the predictors to consider in the model.
+  #   prediction: a predicted uplift to sorts the observations from highest 
+  #               to lowest uplift.
   #   ... and default parameters.
   #
   # Returns:
   #   The performance of an uplift estimator in a table.
   
+  # Error handling
+  if (nb.group < 2) {
+    stop("The number of groups must be greater or equal to 2")
+  }
+  
+  # First, we need to rank and sort the observations
   data$rank <- 0
   data$rank = rank(-data[[prediction]], ties.method = "min") / nrow(data)
   
@@ -28,7 +35,7 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   # Incremental observed uplift
   for(i in 1:nb.group){
     subset <- data[data$group <= i, ]
-    dataResults[i,1] <- i/10
+    dataResults[i,1] <- i/nb.group
     dataResults[i,2] <- sum(subset[[treat]] == 1 & subset[[outcome]] == 1)
     dataResults[i,3] <- sum(subset[[treat]] == 1)
     dataResults[i,4] <- sum(subset[[treat]] == 0 & subset[[outcome]] == 1)

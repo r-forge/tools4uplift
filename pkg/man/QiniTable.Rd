@@ -43,8 +43,7 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+train <- data("SimUplift")
 
 square1 <- SquareUplift(train, "X1", "X2", "treat", "y")
 
