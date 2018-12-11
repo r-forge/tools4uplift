@@ -51,10 +51,11 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-data <- data("SimUplift")
+load("SimUplift")
+data <- SimUplift
 
 features <- BestFeatures(data = data, treat = "treat", outcome = "y", 
-                         predictors = colnames(data[,3:12]))
+                         predictors = colnames(data[,3:7]))
 features
 
 }
