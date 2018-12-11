@@ -17,6 +17,5 @@ export(BestFeatures,
        QiniBarPlot,
        QiniCurve,
        QiniTable,
-       SimUplift,
        SplitUplift,
        SquareUplift)
