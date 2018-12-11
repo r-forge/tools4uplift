@@ -55,9 +55,9 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-square <- SquareUplift(train, "X1", "X2", "treat", "y")
+square <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 
 }
 \keyword{heatmap}

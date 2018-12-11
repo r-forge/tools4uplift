@@ -42,11 +42,11 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-fit <- InterUplift(train, "treat", "y", train[,3:12])
+fit <- InterUplift(SimUplift, "treat", "y", SimUplift[,3:12])
 
-pred <- InterPredict(train, "treat", "y", model = fit, nb.group = 5)[[1]]
+pred <- InterPredict(SimUplift, "treat", "y", model = fit, nb.group = 5)[[1]]
 
 }
 \keyword{prediction}

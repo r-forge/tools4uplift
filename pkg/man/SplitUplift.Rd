@@ -30,9 +30,9 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-split <- SplitUplift(train, 0.8, c("treat", "y"))
+split <- SplitUplift(SimUplift, 0.8, c("treat", "y"))
 train <- split[[1]]
 valid <- split[[2]]
 

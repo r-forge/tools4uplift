@@ -59,9 +59,10 @@ Olivier Gandouet
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-train.enhanced <- BinUpliftEnhanced(data = train, treat = "treat", outcome = "y", 
-                                    var.list = colnames(train[,3:12]))
+train.enhanced <- BinUpliftEnhanced(data = SimUplift, treat = "treat", outcome = "y", 
+                                    var.list = colnames(SimUplift[,3:7]))
 }
 \keyword{tree}
+\keyword{binning}

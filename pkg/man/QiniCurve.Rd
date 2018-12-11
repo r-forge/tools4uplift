@@ -37,9 +37,9 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-square1 <- SquareUplift(train, "X1", "X2", "treat", "y")
+square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
 perf <- QiniTable(data = square1, treat = "treat", 

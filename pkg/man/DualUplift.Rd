@@ -38,9 +38,9 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-fit <- DualUplift(train, "treat", "y", predictors = colnames(train[, 3:12]))
+fit <- DualUplift(SimUplift, "treat", "y", predictors = colnames(SimUplift[, 3:12]))
 
 }
 \keyword{uplift}

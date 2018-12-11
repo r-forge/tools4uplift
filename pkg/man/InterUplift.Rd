@@ -38,9 +38,9 @@ Mouloud Belbahri
 \examples{
 
 library(tools4uplift)
-train <- data("SimUplift")
+data("SimUplift")
 
-fit <- InterUplift(train, "treat", "y", train[,3:12])
+fit <- InterUplift(SimUplift, "treat", "y", SimUplift[,3:12])
 
 }
 \keyword{uplift}
