@@ -13,7 +13,7 @@ QiniBarPlot <- function(x, title = "Model Performance: Uplift by Group", color =
   }
   
   barplot(x[,8]*100, 
-          names.arg = x[,1]/nrow(x)*1000, 
+          names.arg = round(x[,1]*100), 
           col = color,
           xlab = "Proportion of Population Targeted (%)",
           ylab = "Uplift (%)",
