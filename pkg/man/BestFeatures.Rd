@@ -4,7 +4,7 @@
 Feature selection for the interaction estimator
 }
 \description{
-Penalized logistic regression (LASSO) in order to select the features that maximize the Qini coefficient. 
+Qini-based Penalized Uplift Regression in order to select the features that maximize the Qini coefficient. 
 }
 \usage{
 BestFeatures(data, treat, outcome, predictors, nb.lambda = 100, nb.group = 10, 
@@ -62,4 +62,5 @@ features
 
 }
 \keyword{LASSO}
+\keyword{Qini}
 \keyword{logistic}

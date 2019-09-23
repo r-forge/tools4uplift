@@ -1,5 +1,9 @@
 \name{DualUplift}
 \alias{DualUplift}
+\alias{DualUplift.default}
+\alias{DualUplift.formula}
+\alias{print.DualUplift}
+\alias{summary.DualUplift}
 \title{
 Two-model estimator
 }
@@ -7,11 +11,14 @@ Two-model estimator
 Fit the two-model uplift model estimator.
 }
 \usage{
-DualUplift(data, treat, outcome, predictors)
+
+\method{DualUplift}{formula}(formula, treat, data, ...)
+
+\method{DualUplift}{default}(data, treat, outcome, predictors, ...)
+
 }
 \arguments{
-  \item{data}{
-a data frame containing the treatment, the outcome and the predictors.
+  \item{data, formula}{a data frame containing the treatment, the outcome and the predictors or a formula describing the model to be fitted.
 }
   \item{treat}{
 name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
@@ -37,8 +44,6 @@ Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regress
 \author{
 Mouloud Belbahri
 }
-\seealso{
-\code{DualPredict}
 }
 \examples{
 
@@ -47,5 +52,7 @@ data("SimUplift")
 
 fit <- DualUplift(SimUplift, "treat", "y", predictors = colnames(SimUplift[, 3:12]))
 
+print(fit)
+summary(fit)
 }
 \keyword{uplift}

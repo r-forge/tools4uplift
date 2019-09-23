@@ -1,4 +1,6 @@
-InterUplift <- function(data, treat, outcome, predictors, input = "all"){
+InterUplift <- function(object, ...) UseMethod("InterUplift")
+
+InterUplift.default <- function(data, treat, outcome, predictors, input = "all", ...){
   
   # Interaction estimator.
   #
@@ -35,6 +37,10 @@ InterUplift <- function(data, treat, outcome, predictors, input = "all"){
     model <- glm(model_formula, family=binomial(link="logit"), data)
   }
   
+  cl <- match.call()
+  cl[[1]] <- as.name("InterUplift")
+  model$call <- cl
+  class(model) <- c("InterUplift", "glm", "lm")
   return(model)
 }
 

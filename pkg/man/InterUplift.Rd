@@ -1,5 +1,7 @@
 \name{InterUplift}
 \alias{InterUplift}
+\alias{InterUplift.default}
+\alias{InterUplift.formula}
 \title{
 Interaction estimator
 }
@@ -7,11 +9,14 @@ Interaction estimator
 Fit the interaction uplift model estimator.
 }
 \usage{
-InterUplift(data, treat, outcome, predictors, input = "all")
+
+\method{InterUplift}{formula}(formula, treat, data, ...)
+
+\method{InterUplift}{default}data, treat, outcome, predictors, input = "all", ...)
+
 }
 \arguments{
-  \item{data}{
-a data frame containing the treatment, the outcome and the predictors.
+  \item{data, formula}{a data frame containing the treatment, the outcome and the predictors or a formula describing the model to be fitted.
 }
   \item{treat}{
 name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
@@ -36,9 +41,6 @@ Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regress
 }
 \author{
 Mouloud Belbahri
-}
-\seealso{
-\code{InterPredict}
 }
 \examples{
 

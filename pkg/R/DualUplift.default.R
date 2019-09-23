@@ -1,4 +1,6 @@
-DualUplift <- function(data, treat, outcome, predictors){
+DualUplift <- function(object, ...) UseMethod("DualUplift")
+
+DualUplift.default <- function(data, treat, outcome, predictors, ...){
   
   # Two-model estimator.
   #
@@ -36,9 +38,16 @@ DualUplift <- function(data, treat, outcome, predictors){
   
   model1 <- glm(model_formula, family=binomial(link="logit"), mydata1)  
   
-  return(list(model0, model1))
+  res.dual <- list(model0, model1)
+  
+  cl <- match.call()
+  cl[[1]] <- as.name("DualUplift")
+  res.dual[[3]] <- cl
+  
+  class(res.dual) <- "DualUplift"
+  
+  return(res.dual)
   
 }
 
 # END FUN
-

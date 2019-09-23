@@ -1,4 +1,4 @@
-QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
+PerformanceUplift <- function(data, treat, outcome, prediction, nb.group = 10){
   
   # Computes the performance of an uplift estimator.
   #
@@ -12,7 +12,7 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
   #   ... and default parameters.
   #
   # Returns:
-  #   The performance of an uplift estimator in a table.
+  #   Descriptive statistics for the performance of an uplift estimator.
   
   # Error handling
   if (nb.group < 2) {
@@ -51,7 +51,9 @@ QiniTable <- function(data, treat, outcome, prediction, nb.group = 10){
     dataResults[i,8] <- sum(subset[[treat]] == 1 & subset[[outcome]] == 1) / sum(subset[[treat]] == 1) -  
                         sum(subset[[treat]] == 0 & subset[[outcome]] == 1) / sum(subset[[treat]] == 0)
   }
+  dataResults[,8] <- dataResults[,8]*100
   
+  class(dataResults) <- "PerformanceUplift"
   return(dataResults)
 }
 

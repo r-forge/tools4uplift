@@ -8,14 +8,28 @@ import(dplyr,
 export(BestFeatures,
        BinUplift,
        BinUpliftEnhanced,
-       DualPredict,
        DualUplift,
-       InterPredict,
        InterUplift,
        LassoPath,
+       PerformanceUplift,
+       predict.DualUplift,
+       predict.InterUplift,
        QiniArea,
        QiniBarPlot,
        QiniCurve,
-       QiniTable,
        SplitUplift,
        SquareUplift)
+
+### Methods
+
+S3method(print, DualUplift)
+S3method(summary, DualUplift)
+S3method(predict, DualUplift)
+S3method(DualUplift, formula)
+S3method(DualUplift, default)
+
+S3method(predict, InterUplift)
+S3method(InterUplift, formula)
+S3method(InterUplift, default)
+
+S3method(print, PerformanceUplift)

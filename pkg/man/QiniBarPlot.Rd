@@ -11,7 +11,7 @@ QiniBarPlot(x, title = "Model Performance: Uplift by Group", color = NULL)
 }
 \arguments{
   \item{x}{
-a table that must be the output of \code{QiniTable} function.
+a table that must be the output of \code{PerformanceUplift} function.
 }
   \item{title}{
 an overall title for the plot.
@@ -30,7 +30,7 @@ Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regress
 Mouloud Belbahri
 }
 \seealso{
-\code{QiniTable}
+\code{PerformanceUplift}
 }
 \examples{
 
@@ -40,11 +40,10 @@ data("SimUplift")
 square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- QiniTable(data = square1, treat = "treat", 
+perf <- PerformanceUplift(data = square1, treat = "treat", 
                   outcome = "y", prediction = "Uplift_X1_X2", nb.group = 5)
 
 QiniBarPlot(perf)
 
 }
-\keyword{Qini}
 \keyword{performance}

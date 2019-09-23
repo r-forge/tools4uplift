@@ -40,31 +40,35 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
   
   for (k in 1:nrow(path)) {
     features <- path[k, -c(1, 2)]
-    # Keep features with positive estimators only
+    # Keep features with non zero estimates only
     features <- features[features != 0]
-    lambda.formula <- paste(paste(colnames(model.frame(formula, data))[1], "~ "), paste(names(features), collapse=" + "))
     
     # Fit the logistic regression model with selected features only
-    lambda.model <- glm(lambda.formula, family=binomial(link="logit"), data)
+    lambda.model <- InterUplift(data, treat, outcome, names(features), input = "best")
+    
     
     # Compute the qini coefficient and add to the list
     if (validation == FALSE){
-    lambda.qini[k] <- InterPredict(data, treat, colnames(model.frame(formula, data))[1], lambda.model, nb.group)[[2]]
+      data$lambda.pred <- predict(lambda.model, data, treat)
+      lambda.perf <- PerformanceUplift(data, treat, outcome, "lambda.pred" , nb.group)
+      lambda.qini[k] <- QiniArea(lambda.perf)
     }
     if (validation == TRUE){
-      lambda.qini[k] <- InterPredict(valid, treat, colnames(model.frame(formula, valid))[1], lambda.model, nb.group)[[2]]
+      valid$lambda.pred <- predict(lambda.model, valid, treat)
+      lambda.perf <- PerformanceUplift(valid, treat, outcome, "lambda.pred" , nb.group)
+      lambda.qini[k] <- QiniArea(lambda.perf)
     }
   }
   
   best.model <- cbind(path[, c(1, 2)], lambda.qini)
   # Take the model that maximizes the qini coefficient
   best.model <- best.model[which.max(best.model[, "lambda.qini"]), ]
+  if (value == TRUE) {print(best.model)}
   
   # We also need to know which variables were selected
-  best.features <- path[path[, "lambda"]==best.model["lambda"], -c(1, 2)]
+  best.features <- path[path[, "lambda"]==best.model["lambda"], -c(1, 2, 3)]
   best.features <- names(best.features[best.features != 0])
-  
-  if (value == TRUE) {print(best.model)}
+  class(best.features) <- "BestFeatures"
   
   return(best.features)   
 }

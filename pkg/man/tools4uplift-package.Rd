@@ -11,7 +11,6 @@
 \details{
 
 The DESCRIPTION file:
-\packageDESCRIPTION{tools4uplift}
 \packageIndices{tools4uplift}
 
 }

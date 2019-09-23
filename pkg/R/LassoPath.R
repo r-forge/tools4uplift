@@ -21,7 +21,7 @@ LassoPath <- function(data, formula, nb.lambda=100){
   lambda <- glmnet.output$lambda
   
   path <- cbind(lambda, dimension, coeff)
-  
+  class(path) <- "LassoPath"
   
   return(path)  
 }

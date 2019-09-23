@@ -1,5 +1,5 @@
-\name{QiniTable}
-\alias{QiniTable}
+\name{PerformanceUplift}
+\alias{PerformanceUplift}
 \title{
 Performance of an uplift estimator
 }
@@ -7,7 +7,9 @@ Performance of an uplift estimator
 Table of performance of an uplift model. This table is used in order to vizualise the performance of an uplift model and to compute the qini coefficient.
 }
 \usage{
-QiniTable(data, treat, outcome, prediction, nb.group = 10)
+
+\method{PerformanceUplift}(data, treat, outcome, prediction, nb.group = 10)
+
 }
 \arguments{
   \item{data}{
@@ -48,10 +50,9 @@ data("SimUplift")
 square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- QiniTable(data = square1, treat = "treat", 
+perf <- PerformanceUplift(data = square1, treat = "treat", 
                   outcome = "y", prediction = "Uplift_X1_X2")
                   
 perf
 }
-\keyword{Qini}
 \keyword{performance}

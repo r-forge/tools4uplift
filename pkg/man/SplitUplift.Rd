@@ -21,8 +21,8 @@ Your grouping variables. Generally, for uplift modelling, this should be a vecto
 }
 }
 \value{
-\item{train}{a training data frame of $p$ percent}
-\item{valid}{a validation data frame of $1-p$ percent}
+\item{train}{a training data frame of p percent}
+\item{valid}{a validation data frame of 1-p percent}
 }
 \references{
 Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
