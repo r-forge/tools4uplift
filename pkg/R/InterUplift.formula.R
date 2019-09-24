@@ -19,7 +19,7 @@ InterUplift.formula <- function(formula, treat, data){
   
   outcome <- Terms[1]
   predictors <- Terms[-1]
-  fit <- InterUplift(data=data, treat=treat, outcome=outcome, predictors=predictors, input = "all", ...)
+  fit <- InterUplift(data=data, treat=treat, outcome=outcome, predictors=predictors, input = "all")
   
   
   cl <- match.call()

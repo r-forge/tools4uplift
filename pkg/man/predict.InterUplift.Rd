@@ -8,7 +8,7 @@ Predictions from the interaction uplift model estimator with associated model pe
 }
 \usage{
 
-\method{predict}{InterUplift}(object, newdata, treat)
+\method{predict}{InterUplift}(object, newdata, treat, ...)
 
 }
 \arguments{
@@ -18,6 +18,8 @@ Predictions from the interaction uplift model estimator with associated model pe
 }
   \item{treat}{
 name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
+}
+  \item{\dots}{additional arguments to be passed to \code{predict.glm} function for the interaction model.
 }
 }
 \value{

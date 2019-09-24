@@ -2,7 +2,7 @@
 # Predict DualUplift
 ######################################################################
 
-predict.DualUplift <- function(object, newdata) {
+predict.DualUplift <- function(object, newdata, ...) {
   
   if (!inherits(object, "DualUplift"))
     stop("tools4uplift: object not of class DualUplift")
@@ -17,8 +17,8 @@ predict.DualUplift <- function(object, newdata) {
     stop("tools4uplift: variables in the training data missing in newdata")
   
   # Predict the 2 probabilities from model0 and model1
-  pr.y1_ct1 <- predict.glm(model1, newdata, type = "response")
-  pr.y1_ct0 <- predict.glm(model0, newdata, type = "response")
+  pr.y1_ct1 <- predict.glm(model1, newdata, type = "response", ...)
+  pr.y1_ct0 <- predict.glm(model0, newdata, type = "response", ...)
   
   all.res <- pr.y1_ct1 - pr.y1_ct0
   
@@ -32,7 +32,7 @@ predict.DualUplift <- function(object, newdata) {
 # Predict InterUplift
 ######################################################################
 
-predict.InterUplift <- function(object, newdata, treat) {
+predict.InterUplift <- function(object, newdata, treat, ...) {
   
   if (!inherits(object, "InterUplift"))
     stop("tools4uplift: object not of class InterUplift")
@@ -40,10 +40,10 @@ predict.InterUplift <- function(object, newdata, treat) {
     stop("tools4uplift: newdata has 0 rows")
   
   data1 <- newdata; data1[treat] <- 1
-  pr.y1_ct1 <- predict.glm(object, newdata=data1, type="response")
+  pr.y1_ct1 <- predict.glm(object, newdata=data1, type="response", ...)
   
   data0 <- newdata; data0[treat] <- 0
-  pr.y1_ct0 <- predict.glm(object, newdata=data0, type="response")
+  pr.y1_ct0 <- predict.glm(object, newdata=data0, type="response", ...)
   
   all.res <- pr.y1_ct1 - pr.y1_ct0
   

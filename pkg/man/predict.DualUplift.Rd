@@ -8,12 +8,14 @@ Predictions from the two-model uplift model estimator with associated model perf
 }
 \usage{
 
-\method{predict}{DualUplift}(object, newdata)
+\method{predict}{DualUplift}(object, newdata, ...)
 }
 \arguments{
   \item{object}{an object of class \code{DualUplift}, as that created by the function \code{DualUplift}.
 }
   \item{newdata}{a data frame containing the treatment, the outcome and the predictors of observations at which predictions are required.
+}
+  \item{\dots}{additional arguments to be passed to \code{predict.glm} function for each sub-model.
 }
 }
 \value{
