@@ -1,6 +1,6 @@
 BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05, 
                       n.min = 30, ylim = NULL, ylab = "Uplift",
-                      title = "Binning Results", color = NULL){
+                      title = NULL, color = NULL){
   
   # Univariate categorization.
   #
@@ -35,6 +35,9 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
   }
   if (sum(is.na(data[[treat]])) > 0 ) {
     stop("Treatment variable contains missing values: remove the observations and proceed")
+  }
+  if (length(unique(data[[x]])) < 3) {
+    stop("Independent variable must contain at least 3 different unique values")
   }
   if (sum(is.na(data[[x]])) > 0 ) {
     warning("Independent variable contains missing values: remove the observations and proceed")

@@ -8,7 +8,7 @@ Predictions from the interaction uplift model estimator with associated model pe
 }
 \usage{
 
-\method{predict}{InterUplift}(object, newdata, treat, ...)
+\method{predict}{InterUplift}(object, newdata, treat)
 
 }
 \arguments{

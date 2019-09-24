@@ -9,7 +9,7 @@ Univariate optimal partitionning for Uplift Models. The algorithm quantizes a si
 \usage{
 BinUplift(data, treat, outcome, x, n.split = 10, alpha = 0.05, 
           n.min = 30, ylim = NULL, ylab = "Uplift",
-          title = "Binning Results", color = NULL)
+          title = NULL, color = NULL)
 }
 \arguments{
   \item{data}{

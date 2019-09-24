@@ -9,7 +9,7 @@ Univariate optimal partitionning for Uplift Models. The algorithm quantizes seve
 \usage{
 BinUpliftEnhanced(data, treat, outcome, var.list, n.split = 10, 
                   alpha = 0.05, n.min = 30, ylim = NULL, 
-                  ylab = "Uplift", title = "Binning Results", 
+                  ylab = "Uplift", title = NULL, 
                   color = NULL)
 }
 \arguments{

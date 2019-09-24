@@ -19,6 +19,10 @@ PerformanceUplift <- function(data, treat, outcome, prediction, nb.group = 10){
     stop("The number of groups must be greater or equal to 2")
   }
   
+  if (length(unique(data[[prediction]])) < nb.group) {
+    nb.group <- length(unique(data[[prediction]]))
+    warning("The number of unique predictions will be used as nb.group")
+  }
   # First, we need to rank and sort the observations
   data$rank <- 0
   data$rank = rank(-data[[prediction]], ties.method = "min") / nrow(data)

@@ -1,4 +1,4 @@
-DualUplift <- function(object, ...) UseMethod("DualUplift")
+DualUplift <- function(data, ...) UseMethod("DualUplift")
 
 DualUplift.default <- function(data, treat, outcome, predictors, ...){
   

@@ -10,9 +10,9 @@ Fit the interaction uplift model estimator.
 }
 \usage{
 
-\method{InterUplift}{formula}(formula, treat, data, ...)
+\method{InterUplift}{formula}(formula, treat, data)
 
-\method{InterUplift}{default}data, treat, outcome, predictors, input = "all", ...)
+\method{InterUplift}{default}(data, treat, outcome, predictors, input = "all")
 
 }
 \arguments{

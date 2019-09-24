@@ -12,9 +12,9 @@ Fit the two-model uplift model estimator.
 }
 \usage{
 
-\method{DualUplift}{formula}(formula, treat, data, ...)
+\method{DualUplift}{formula}(formula, treat, data)
 
-\method{DualUplift}{default}(data, treat, outcome, predictors, ...)
+\method{DualUplift}{default}(data, treat, outcome, predictors)
 
 }
 \arguments{
@@ -43,7 +43,6 @@ Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regress
 }
 \author{
 Mouloud Belbahri
-}
 }
 \examples{
 

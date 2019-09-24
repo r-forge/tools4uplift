@@ -2,7 +2,7 @@
 # Predict DualUplift
 ######################################################################
 
-predict.DualUplift <- function(object, newdata, ...) {
+predict.DualUplift <- function(object, newdata) {
   
   if (!inherits(object, "DualUplift"))
     stop("tools4uplift: object not of class DualUplift")
@@ -32,7 +32,7 @@ predict.DualUplift <- function(object, newdata, ...) {
 # Predict InterUplift
 ######################################################################
 
-predict.InterUplift <- function(object, newdata, treat, ...) {
+predict.InterUplift <- function(object, newdata, treat) {
   
   if (!inherits(object, "InterUplift"))
     stop("tools4uplift: object not of class InterUplift")

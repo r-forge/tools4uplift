@@ -1,5 +1,6 @@
 \name{PerformanceUplift}
 \alias{PerformanceUplift}
+\alias{print.PerformanceUplift}
 \title{
 Performance of an uplift estimator
 }
@@ -7,9 +8,7 @@ Performance of an uplift estimator
 Table of performance of an uplift model. This table is used in order to vizualise the performance of an uplift model and to compute the qini coefficient.
 }
 \usage{
-
-\method{PerformanceUplift}(data, treat, outcome, prediction, nb.group = 10)
-
+PerformanceUplift(data, treat, outcome, prediction, nb.group = 10)
 }
 \arguments{
   \item{data}{
@@ -53,6 +52,6 @@ square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 perf <- PerformanceUplift(data = square1, treat = "treat", 
                   outcome = "y", prediction = "Uplift_X1_X2")
                   
-perf
+print(perf)
 }
 \keyword{performance}

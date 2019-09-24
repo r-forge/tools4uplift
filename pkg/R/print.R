@@ -2,13 +2,13 @@
 # Print DualUplift
 ######################################################################
 
-print.DualUplift <- function(object, ...) {
+print.DualUplift <- function(x, ...) {
   
   # Print interface to DualUplift.
   
-  res <- list (call         = object[[3]],
-               control      = object[[1]], 
-               treatment    = object[[2]])             
+  res <- list (call         = x[[3]],
+               control      = x[[1]], 
+               treatment    = x[[2]])             
   
   res$control$call <- "Control Group Logistic Model"
   res$treatment$call <- "Treatment Group Logistic Model"
