@@ -37,7 +37,7 @@ data("SimUplift")
 
 fit <- DualUplift(SimUplift, "treat", "y", predictors = colnames(SimUplift[, 3:12]))
 
-pred <- predict(fit, SimUplift, "treat")
+pred <- predict(fit, SimUplift)
 
 }
 \keyword{prediction}

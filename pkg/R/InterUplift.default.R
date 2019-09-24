@@ -1,6 +1,6 @@
 InterUplift <- function(data, ...) UseMethod("InterUplift")
 
-InterUplift.default <- function(data, treat, outcome, predictors, input = "all", ...){
+InterUplift.default <- function(data, treat, outcome, predictors, input = "all"){
   
   # Interaction estimator.
   #

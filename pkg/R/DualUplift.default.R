@@ -1,6 +1,6 @@
 DualUplift <- function(data, ...) UseMethod("DualUplift")
 
-DualUplift.default <- function(data, treat, outcome, predictors, ...){
+DualUplift.default <- function(data, treat, outcome, predictors){
   
   # Two-model estimator.
   #

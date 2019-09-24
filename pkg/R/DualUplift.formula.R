@@ -1,4 +1,4 @@
-DualUplift.formula <- function(formula, treat, data, ...){
+DualUplift.formula <- function(formula, treat, data){
   
   # Formula interface to DualUplift.
   if (!inherits(formula, "formula"))

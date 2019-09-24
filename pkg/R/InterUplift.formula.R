@@ -1,4 +1,4 @@
-InterUplift.formula <- function(formula, treat, data, ...){
+InterUplift.formula <- function(formula, treat, data){
   
   # Formula interface to InterUplift.
   if (!inherits(formula, "formula"))
