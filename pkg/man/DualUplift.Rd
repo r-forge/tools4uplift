@@ -12,9 +12,9 @@ Fit the two-model uplift model estimator.
 }
 \usage{
 
-\method{DualUplift}{formula}(formula, treat, data)
+\method{DualUplift}{formula}(formula, treat, data, ...)
 
-\method{DualUplift}{default}(data, treat, outcome, predictors)
+\method{DualUplift}{default}(data, treat, outcome, predictors, ...)
 
 }
 \arguments{
@@ -28,6 +28,8 @@ name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{predictors}{
 a vector of names representing the explanatory variables to include in the model.
+}
+  \item{\dots}{additional arguments (other than \code{formula}, \code{family}, and \cote{data}) to be passed to \code{glm} function for each sub-model.
 }
 }
 \value{

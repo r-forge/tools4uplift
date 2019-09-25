@@ -10,9 +10,9 @@ Fit the interaction uplift model estimator.
 }
 \usage{
 
-\method{InterUplift}{formula}(formula, treat, data)
+\method{InterUplift}{formula}(formula, treat, data, ...)
 
-\method{InterUplift}{default}(data, treat, outcome, predictors, input = "all")
+\method{InterUplift}{default}(data, treat, outcome, predictors, input = "all", ...)
 
 }
 \arguments{
@@ -29,6 +29,8 @@ a vector of names representing the explanatory variables to include in the model
 }
   \item{input}{
 an option for \code{predictors} argument. If \code{"all"} (default), the model assumes that the model has to create the interaction of all varibles with \code{treat}. If \code{"best"}, the model assumes that the \code{predictors} vector is the output of the \code{BestFeatures} function.
+}
+  \item{\dots}{additional arguments (other than \code{formula}, \code{family}, and \cote{data}) to be passed to \code{glm} function for the interaction model.
 }
 }
 \value{

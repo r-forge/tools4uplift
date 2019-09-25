@@ -1,6 +1,6 @@
-InterUplift <- function(data) UseMethod("InterUplift")
+InterUplift <- function(data, ...) UseMethod("InterUplift")
 
-InterUplift.default <- function(data, treat, outcome, predictors, input = "all"){
+InterUplift.default <- function(data, treat, outcome, predictors, input = "all", ...){
   
   # Interaction estimator.
   #
@@ -29,12 +29,12 @@ InterUplift.default <- function(data, treat, outcome, predictors, input = "all")
       inter_formula <- paste(inter_formula, paste(predictors[k], treat, sep = ":"), sep="+")
     }
     model_formula <- as.formula(paste(paste(outcome, "~", treat, "+"),paste(predictors,collapse="+"),inter_formula))
-    model <- glm(model_formula, family=binomial(link="logit"), data)
+    model <- glm(model_formula, family=binomial(link="logit"), data, ...)
   }
   
   if (input == "best") {
     model_formula <- as.formula(paste(paste(outcome, "~"),paste(predictors,collapse = "+")))
-    model <- glm(model_formula, family=binomial(link="logit"), data)
+    model <- glm(model_formula, family=binomial(link="logit"), data, ...)
   }
   
   cl <- match.call()

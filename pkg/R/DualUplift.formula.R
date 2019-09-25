@@ -1,4 +1,4 @@
-DualUplift.formula <- function(formula, treat, data){
+DualUplift.formula <- function(formula, treat, data, ...){
   
   # Formula interface to DualUplift.
   if (!inherits(formula, "formula"))
@@ -19,7 +19,7 @@ DualUplift.formula <- function(formula, treat, data){
   
   outcome <- Terms[1]
   predictors <- Terms[-1]
-  fit <- DualUplift(data=data, treat=treat, outcome=outcome, predictors=predictors)
+  fit <- DualUplift(data=data, treat=treat, outcome=outcome, predictors=predictors, ...)
 
   cl <- match.call()
   cl[[1]] <- as.name("DualUplift")
