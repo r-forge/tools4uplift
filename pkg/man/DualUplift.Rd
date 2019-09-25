@@ -29,7 +29,7 @@ name of a binary response (numeric) vector (coded as 0/1).
   \item{predictors}{
 a vector of names representing the explanatory variables to include in the model.
 }
-  \item{\dots}{additional arguments (other than \code{formula}, \code{family}, and \cote{data}) to be passed to \code{glm} function for each sub-model.
+  \item{\dots}{additional arguments (other than \code{formula}, \code{family}, and \code{data}) to be passed to \code{glm} function for each sub-model.
 }
 }
 \value{
