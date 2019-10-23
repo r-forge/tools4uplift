@@ -38,6 +38,8 @@ predict.InterUplift <- function(object, newdata, treat, ...) {
     stop("tools4uplift: object not of class InterUplift")
   if (nrow(newdata) == 0)
     stop("tools4uplift: newdata has 0 rows")
+  if (is.null(treat) == TRUE)
+    stop("tools4uplift: please specify the treatment variable name")
   
   data1 <- newdata; data1[treat] <- 1
   pr.y1_ct1 <- predict.glm(object, newdata=data1, type="response", ...)

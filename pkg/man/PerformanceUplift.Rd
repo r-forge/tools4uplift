@@ -8,7 +8,7 @@ Performance of an uplift estimator
 Table of performance of an uplift model. This table is used in order to vizualise the performance of an uplift model and to compute the qini coefficient.
 }
 \usage{
-PerformanceUplift(data, treat, outcome, prediction, nb.group = 10)
+PerformanceUplift(data, treat, outcome, prediction, rank.precision = 2, equal.intervals = FALSE, nb.group = 10)
 }
 \arguments{
   \item{data}{
@@ -23,8 +23,14 @@ a binary response (numeric) vector (coded as 0/1).
   \item{prediction}{
 a predicted uplift (numeric) vector to sort the observations from highest to lowest uplift.
 }
+  \item{rank.precision}{
+precision for the ranking quantiles. Must be 1 or 2. If 1, the ranking quantiles will be rounded to the first decimal. If 2, to the second decimal.
+}
+  \item{equal.intervals}{
+flag for using equal intervals (with equal number of observations) or the true ranking quantiles which result in an unequal number of observations in each group.
+}
   \item{nb.group}{
-number of groups of equal observations in which to partition the data set to show results.
+if equal.intervals is set to true, the number of groups of equal observations in which to partition the data set to show results.
 }
 }
 \value{

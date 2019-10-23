@@ -25,7 +25,7 @@ name of a binary response (numeric) vector (coded as 0/1).
 name of the explanatory variable to quantize.
 }
   \item{n.split}{
-number of splits to test at each node. For continuous explanatory variables only (must be > 0).
+number of splits to test at each node. For continuous explanatory variables only (must be > 0). If n.split = 10, the test will be executed at each decile of the variable.
 }
   \item{alpha}{
 significance level of the statistical test (must be between 0 and 1).

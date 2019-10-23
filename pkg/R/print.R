@@ -20,7 +20,7 @@ print.DualUplift <- function(x, ...) {
 # END FUN
 
 ######################################################################
-# Predict PerformanceUplift
+# Print PerformanceUplift
 ######################################################################
 
 print.PerformanceUplift <- function(x, ...) {
@@ -33,6 +33,23 @@ print.PerformanceUplift <- function(x, ...) {
   
   class(res) <- "print.PerformanceUplift"
   return(print(res))
+}
+
+# END FUN
+
+
+
+######################################################################
+# Print SplitUplift
+######################################################################
+
+print.SplitUplift <- function(x, ...) {
+  
+  # Print interface to SplitUplift
+  cat("Call: SplitUplift\n")
+  cat("Number of observations in training: ", nrow(x[[1]]), "\n",sep="")
+  cat("Number of observations in validation: ", nrow(x[[2]]), "\n",sep="")
+
 }
 
 # END FUN
