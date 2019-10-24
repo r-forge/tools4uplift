@@ -50,12 +50,12 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
     # Compute the qini coefficient and add to the list
     if (validation == FALSE){
       data$lambda.pred <- predict(lambda.model, data, treat)
-      lambda.perf <- PerformanceUplift(data, treat, outcome, "lambda.pred" , nb.group)
+      lambda.perf <- PerformanceUplift(data, treat, outcome, "lambda.pred" , rank.precision = 2, equal.intervals = FALSE, nb.group = nb.group)
       lambda.qini[k] <- QiniArea(lambda.perf)
     }
     if (validation == TRUE){
       valid$lambda.pred <- predict(lambda.model, valid, treat)
-      lambda.perf <- PerformanceUplift(valid, treat, outcome, "lambda.pred" , nb.group)
+      lambda.perf <- PerformanceUplift(valid, treat, outcome, "lambda.pred" , rank.precision = 2, equal.intervals = FALSE, nb.group = nb.group)
       lambda.qini[k] <- QiniArea(lambda.perf)
     }
   }

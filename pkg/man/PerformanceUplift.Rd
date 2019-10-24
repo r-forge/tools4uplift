@@ -8,7 +8,8 @@ Performance of an uplift estimator
 Table of performance of an uplift model. This table is used in order to vizualise the performance of an uplift model and to compute the qini coefficient.
 }
 \usage{
-PerformanceUplift(data, treat, outcome, prediction, rank.precision = 2, equal.intervals = FALSE, nb.group = 10)
+PerformanceUplift(data, treat, outcome, prediction, rank.precision = 2, 
+                  equal.intervals = FALSE, nb.group = 10)
 }
 \arguments{
   \item{data}{
