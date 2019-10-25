@@ -51,7 +51,7 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05,
   
   BinUpliftStump <- function(data, outcome, treat, x, n.split){
   
-    x.cut <- quantile(data[[x]], seq(0, 1, 1/n.split))
+    x.cut <- unique(quantile(data[[x]], seq(0, 1, 1/n.split)))
     
     splits <- matrix(data = NA, nrow = length(x.cut), ncol = 14)
     colnames(splits) <- c("x.cut", "n.lt", "n.lc", "p.lt", "p.lc", "u.l",

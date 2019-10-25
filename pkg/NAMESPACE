@@ -1,6 +1,6 @@
-importFrom("grDevices", "heat.colors", "rgb", "colorRampPalette")
-importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "plot", "title", "par")
-importFrom("stats", "as.formula", "binomial", "complete.cases", "glm", "model.frame", "model.matrix", "predict", "quantile", "qnorm", "rbinom", "runif", "predict.glm", "summary.glm")
+importFrom("grDevices", "colorRampPalette", "heat.colors", "rgb")
+importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "par", "plot", "title")
+importFrom("stats", "as.formula", "binomial", "complete.cases", "glm", "model.frame", "model.matrix", "predict", "predict.glm", "qnorm", "quantile", "rbinom", "runif", "summary.glm")
 
 import(dplyr,
        glmnet)
@@ -33,3 +33,4 @@ S3method(InterUplift, formula)
 S3method(InterUplift, default)
 
 S3method(print, PerformanceUplift)
+S3method(print, SplitUplift)
