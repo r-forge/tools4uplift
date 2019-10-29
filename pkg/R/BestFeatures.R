@@ -1,5 +1,6 @@
 BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100, 
-                         nb.group = 10, validation = FALSE, p = 0.3, value = FALSE){
+                         rank.precision = 2, equal.intervals = FALSE, nb.group = 10, 
+                         validation = FALSE, p = 0.3, value = FALSE){
 
   # Feature selection for the interaction estimator.
   #
@@ -50,19 +51,25 @@ BestFeatures <- function(data, treat, outcome, predictors, nb.lambda = 100,
     # Compute the qini coefficient and add to the list
     if (validation == FALSE){
       data$lambda.pred <- predict(lambda.model, data, treat)
-      lambda.perf <- PerformanceUplift(data, treat, outcome, "lambda.pred" , rank.precision = 2, equal.intervals = FALSE, nb.group = nb.group)
+      lambda.perf <- PerformanceUplift(data, treat, outcome, "lambda.pred" , 
+                                       rank.precision = rank.precision, 
+                                       equal.intervals = equal.intervals, 
+                                       nb.group = nb.group)
       lambda.qini[k] <- QiniArea(lambda.perf)
     }
     if (validation == TRUE){
       valid$lambda.pred <- predict(lambda.model, valid, treat)
-      lambda.perf <- PerformanceUplift(valid, treat, outcome, "lambda.pred" , rank.precision = 2, equal.intervals = FALSE, nb.group = nb.group)
+      lambda.perf <- PerformanceUplift(valid, treat, outcome, "lambda.pred" , rank.precision = rank.precision, 
+                                       equal.intervals = equal.intervals, 
+                                       nb.group = nb.group)
       lambda.qini[k] <- QiniArea(lambda.perf)
     }
   }
   
   best.model <- cbind(path[, c(1, 2)], lambda.qini)
   # Take the model that maximizes the qini coefficient
-  best.model <- best.model[which.max(best.model[, "lambda.qini"]), ]
+  max.qini <- which.max(best.model[, "lambda.qini"])[[1]]
+  best.model <- best.model[max.qini, ]
   if (value == TRUE) {print(best.model)}
   
   # We also need to know which variables were selected

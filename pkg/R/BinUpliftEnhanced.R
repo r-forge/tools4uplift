@@ -31,7 +31,7 @@ BinUpliftEnhanced <- function(data, treat, outcome, var.list, n.split = 10,
         data[, current_enhanced_var] <- 0
         
         for (threshold in current_binning[[1]]$x.cut) {
-            data[, current_enhanced_var] <- as.double(data[, var_name]>threshold) + data[, current_enhanced_var]
+            data[, current_enhanced_var] <- as.double(data[, var_name]>=threshold) + data[, current_enhanced_var]
         }
       }
   }
