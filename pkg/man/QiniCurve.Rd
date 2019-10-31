@@ -21,7 +21,7 @@ color of the curve.
 }
 }
 \value{
-a Qini curve
+a Qini curve and the associated Qini coefficient
 }
 \references{
 Radcliffe, N. (2007). Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, An Annual Publication from the Direct Marketing Association Analytics Council, pages 14-21.
@@ -43,7 +43,9 @@ square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
 perf <- PerformanceUplift(data = square1, treat = "treat", 
-                  outcome = "y", prediction = "Uplift_X1_X2", nb.group = 5)
+                  outcome = "y", prediction = "Uplift_X1_X2", 
+                  equal.intervals = TRUE, nb.group = 5)
+                  
 QiniCurve(perf)
 
 }

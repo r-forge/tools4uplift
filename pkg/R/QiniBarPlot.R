@@ -23,7 +23,9 @@ QiniBarPlot <- function(x, title = "Model Performance: Uplift by Group", color =
           cex.main = 0.85,
           main = title)
   
-  return(NULL)
+  kendall_uplift <- cor(seq(length(x$cum_per),1), x$uplift, method="kendall")
+  
+  return(kendall_uplift)
   
 }
 

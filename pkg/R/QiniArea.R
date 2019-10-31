@@ -1,4 +1,4 @@
-QiniArea <- function(x){
+QiniArea <- function(x, adjusted=FALSE){
   
   # Computes the area under the Qini curve.
   #
@@ -17,7 +17,13 @@ QiniArea <- function(x){
     sum <- sum + (x$inc_uplift[i] + x$inc_uplift[i-1])/2*(x$T_n[i]/x$T_n[nb]-x$T_n[i-1]/x$T_n[nb])
   }
   
-  return(sum-x$inc_uplift[nb]/2)
+  qini_area <- sum-x$inc_uplift[nb]/2
+  
+  if (adjusted == TRUE){
+    qini_area <- qini_area * cor(seq(nb,1), x$uplift, method="kendall")
+  }
+  
+  return(qini_area)
 }
 
 # END FUN

@@ -21,7 +21,7 @@ color of the barplot.
 }
 }
 \value{
-a barplot
+a barplot and the associated Kendall's uplift rank correlation
 }
 \references{
 Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
@@ -41,7 +41,8 @@ square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
 perf <- PerformanceUplift(data = square1, treat = "treat", 
-                  outcome = "y", prediction = "Uplift_X1_X2", nb.group = 5)
+                  outcome = "y", prediction = "Uplift_X1_X2", 
+                  equal.intervals = TRUE, nb.group = 5)
 
 QiniBarPlot(perf)
 

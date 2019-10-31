@@ -61,7 +61,9 @@ library(tools4uplift)
 data("SimUplift")
 
 features <- BestFeatures(data = SimUplift, treat = "treat", outcome = "y", 
-                         predictors = colnames(SimUplift[,3:7]))
+                         predictors = colnames(SimUplift[,3:7]),
+                         equal.intervals = TRUE, nb.group = 5, 
+                         validation = FALSE)
 features
 
 }

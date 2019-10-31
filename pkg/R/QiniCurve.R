@@ -28,9 +28,8 @@ QiniCurve <- function(x, title = "Model Performance: Qini Curve", color = NULL){
        cex.main = 0.85,
        main = title
   )
-  abline(a = 0, b = x$inc_uplift[nb]/100, col = cGrey, lwd = 2.0)
-  
-  return(NULL)
+  lines(c(0,100), c(0, x$inc_uplift[nb]), col=cGrey, type="b", lwd=1.5)
+  return(QiniArea(x))
 }
 
 # END FUN
