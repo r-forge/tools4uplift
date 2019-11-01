@@ -1,9 +1,10 @@
 importFrom("grDevices", "colorRampPalette", "heat.colors", "rgb")
 importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "par", "plot", "title")
-importFrom("stats", "as.formula", "binomial", "complete.cases", "glm", "model.frame", "model.matrix", "predict", "predict.glm", "qnorm", "quantile", "rbinom", "runif", "summary.glm")
+importFrom("stats", "as.formula", "binomial", "complete.cases", "cor", "glm", "model.frame", "model.matrix", "predict", "predict.glm", "qnorm", "quantile", "rbinom", "runif", "summary.glm")
 
 import(dplyr,
-       glmnet)
+       glmnet,
+       lhs)
 
 export(BestFeatures,
        BinUplift,
@@ -18,6 +19,7 @@ export(BestFeatures,
        QiniArea,
        QiniBarPlot,
        QiniCurve,
+       qLHS,
        SplitUplift,
        SquareUplift)
 
@@ -34,4 +36,6 @@ S3method(InterUplift, formula)
 S3method(InterUplift, default)
 
 S3method(print, PerformanceUplift)
+S3method(print, qLHS)
 S3method(print, SplitUplift)
+

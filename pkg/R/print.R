@@ -53,3 +53,28 @@ print.SplitUplift <- function(x, ...) {
 }
 
 # END FUN
+
+
+
+######################################################################
+# Print SplitUplift
+######################################################################
+
+print.qLHS <- function(x, ...) {
+  
+  res <- x
+
+  # Print interface to qLHS
+
+  for (j in 1:length(res$modelLHS)){
+    res$modelLHS[[j]]$call <- paste("LHS Model ", j)
+    res$modelLHS[[j]]$aic <- NA
+    res$modelLHS[[j]]$null.deviance <- NA
+    res$modelLHS[[j]]$deviance <- NA
+  }
+
+  class(res) <- "print.qLHS"
+  return(print(res))
+}
+
+# END FUN

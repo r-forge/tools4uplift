@@ -9,7 +9,7 @@ Qini-based Penalized Uplift Regression in order to select the features that maxi
 \usage{
 BestFeatures(data, treat, outcome, predictors, rank.precision = 2, 
                             equal.intervals = FALSE, nb.group = 10, 
-                            validation = TRUE, p = 0.3, value = FALSE) 
+                            validation = TRUE, p = 0.3) 
 }
 \arguments{
   \item{data}{
@@ -38,9 +38,6 @@ if TRUE, the best features are selected based on cross-validation - Default is T
 }
   \item{p}{
 if validation is TRUE, the desired proportion for the validation set. p is a value between 0 and 1 expressed as a decimal, it is set to be proportional to the number of observations per group - Default is 0.3.
-}
-  \item{value}{
-if TRUE, the values of the best lambda and Qini coefficient will be printed - Default is FALSE.
 }
 }
 \details{

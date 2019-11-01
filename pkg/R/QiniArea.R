@@ -20,7 +20,19 @@ QiniArea <- function(x, adjusted=FALSE){
   qini_area <- sum-x$inc_uplift[nb]/2
   
   if (adjusted == TRUE){
-    qini_area <- qini_area * cor(seq(nb,1), x$uplift, method="kendall")
+    #Compute the Kendall's uplift rank correlation
+    #Raise a warning if there are missing values in x
+    
+    x_for_rho <- cbind(x$cum_per, x$uplift)
+    complete_x_for_rho <- x_for_rho[complete.cases(x_for_rho),]
+    if (nrow(x_for_rho) > nrow(complete_x_for_rho)){
+      warning("tools4uplift: there are missing values in your PerformanceUplift object. They will be omitted in the computation of the Kendall's rank correlation.")
+    }
+    
+    kendall_uplift <- cor(seq(nrow(complete_x_for_rho),1), complete_x_for_rho[,2], method="kendall")
+    
+    
+    qini_area <- qini_area * kendall_uplift
   }
   
   return(qini_area)

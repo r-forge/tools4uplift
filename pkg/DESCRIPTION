@@ -12,5 +12,5 @@ Description: Uplift modeling aims at predicting the causal effect of an action s
     v) model validation. For more details, please read Belbahri et Al. (2019) 
     <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>.
 Depends: R (>= 3.1.2)
-Imports: dplyr, glmnet
+Imports: dplyr, glmnet, lhs
 License: GPL-2 | GPL-3

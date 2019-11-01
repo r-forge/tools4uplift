@@ -1,6 +1,6 @@
 BestFeatures <- function (data, treat, outcome, predictors, rank.precision = 2, 
                             equal.intervals = FALSE, nb.group = 10, 
-                            validation = TRUE, p = 0.3, value = FALSE) {
+                            validation = TRUE, p = 0.3) {
     # Feature selection for the interaction estimator.
     #
     # Args:
@@ -34,6 +34,7 @@ BestFeatures <- function (data, treat, outcome, predictors, rank.precision = 2,
       valid <- split[[2]]
     }
     path <- LassoPath(data, formula)
+    path <- path[!duplicated(path[,"dimension"]), ]
     # Keep paths of dimension > 0
     path <- path[path[, "dimension"] > 0, ]
     lambda.qini <- c()
@@ -79,9 +80,6 @@ BestFeatures <- function (data, treat, outcome, predictors, rank.precision = 2,
     # Take the model that maximizes the qini coefficient
     max.qini <- which.max(best.model[,3])
     best.model <- best.model[max.qini,]
-    if (value == TRUE) {
-      print(best.model)
-    }
     
     # We also need to know which variables were selected
     best.features <- path[path[, "lambda"] == best.model["lambda"], -c(1, 2, 3)]
