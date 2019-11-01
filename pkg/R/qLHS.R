@@ -88,7 +88,8 @@ qLHS <- function (data, treat, outcome, predictors, lhs_points = 50,
                                          equal.intervals = equal.intervals, 
                                          nb.group = nb.group)
       }
-      betaLHS[m, ncol(betaLHS)] <- QiniArea(lambda.perf, adjusted)
+      if (length(lambda.perf[[1]]) == 1) { betaLHS[m, ncol(betaLHS)] <- 0}
+      else{betaLHS[m, ncol(betaLHS)] <- QiniArea(lambda.perf, adjusted)}
     }
     
     pathLHS[[k]] <- c(path[k, c(1,2)], betaLHS[which.max(betaLHS[,ncol(betaLHS)]), ])
