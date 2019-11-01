@@ -7,7 +7,10 @@ Qini-based LHS Uplift Model
 A Qini-based LHS (Latin Hypercube Sampling) uplift model.
 }
 \usage{
-qLHS(data, treat, outcome, predictors, lhs_points = 50, lhs_range = 1, adjusted = TRUE, rank.precision = 2, equal.intervals = FALSE, nb.group = 10, validation = TRUE, p = 0.3, all = FALSE)
+qLHS(data, treat, outcome, predictors, 
+     lhs_points = 50, lhs_range = 1, 
+     adjusted = TRUE, rank.precision = 2, equal.intervals = FALSE, 
+     nb.group = 10, validation = TRUE, p = 0.3, all = FALSE)
 }
 \arguments{
   \item{data}{
