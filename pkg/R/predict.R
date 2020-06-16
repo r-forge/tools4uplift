@@ -41,6 +41,9 @@ predict.InterUplift <- function(object, newdata, treat, ...) {
   if (is.null(treat) == TRUE)
     stop("tools4uplift: please specify the treatment variable name")
   
+  
+  #use computeUplift function instead !
+  
   data1 <- newdata; data1[treat] <- 1
   pr.y1_ct1 <- predict.glm(object, newdata=data1, type="response", ...)
   

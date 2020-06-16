@@ -10,7 +10,7 @@ Description: Uplift modeling aims at predicting the causal effect of an action s
     we propose a combination of tools that can be separated into the following ingredients: 
     i) quantization, ii) visualization, iii) feature engineering, iv) feature selection and, 
     v) model validation. For more details, please read Belbahri et Al. (2019) 
-    <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>.
+    <https://arxiv.org/abs/1901.10867>.
 Depends: R (>= 3.1.2)
 Imports: dplyr, glmnet, lhs
 License: GPL-2 | GPL-3

@@ -18,14 +18,17 @@ qLHS <- function (data, treat, outcome, predictors, lhs_points = 50,
   
   # All variables must be continuous. Before using this function, change 
   # categorical variables to dummies.
-  inter.formula <- c()
-  for (k in seq(1:length(predictors))) {
-    inter.formula <- paste(inter.formula, paste(predictors[k], 
-                                                treat, sep = ":"), sep = "+")
-  }
-  formula <- as.formula(paste(paste(outcome, "~", treat, 
-                                    "+"), paste(predictors, collapse = "+"), 
-                              inter.formula))
+  #inter.formula <- c()
+  #for (k in seq(1:length(predictors))) {
+  #  inter.formula <- paste(inter.formula, paste(predictors[k], 
+  #                                              treat, sep = ":"), sep = "+")
+  #}
+  #formula <- as.formula(paste(paste(outcome, "~", treat, 
+  #                                  "+"), paste(predictors, collapse = "+"), 
+  #                            inter.formula))
+  
+  
+  formula <- formulaUplift(treat, outcome, predictors)
   
   # Cross-validation
   # Split data between train (data) and valid using SplitUplift() function
@@ -130,4 +133,3 @@ qLHS <- function (data, treat, outcome, predictors, lhs_points = 50,
 }
 
 # END FUN
-

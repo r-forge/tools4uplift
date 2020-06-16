@@ -12,7 +12,6 @@ export(BestFeatures,
        DualUplift,
        InterUplift,
        LassoPath,
-       MultiQiniCurve,
        PerformanceUplift,
        predict.DualUplift,
        predict.InterUplift,
@@ -21,7 +20,8 @@ export(BestFeatures,
        QiniCurve,
        qLHS,
        SplitUplift,
-       SquareUplift)
+       SquareUplift,
+       utils)
 
 ### Methods
 

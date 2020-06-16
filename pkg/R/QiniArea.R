@@ -32,7 +32,7 @@ QiniArea <- function(x, adjusted=FALSE){
     kendall_uplift <- cor(seq(nrow(complete_x_for_rho),1), complete_x_for_rho[,2], method="kendall")
     
     
-    qini_area <- qini_area * kendall_uplift
+    qini_area <- max(0, qini_area) * kendall_uplift
   }
   
   return(qini_area)
