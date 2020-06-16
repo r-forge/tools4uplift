@@ -4,13 +4,11 @@ Date: 2019-10-30
 Title: Tools for Uplift Modeling
 Author: Mouloud Belbahri, Olivier Gandouet, Alejandro Murua, Vahid Partovi Nia
 Maintainer: Mouloud Belbahri <mouloud.belbahri@gmail.com>
-Description: Uplift modeling aims at predicting the causal effect of an action such as a medical
-    treatment or a marketing campaign on a particular individual, by taking into consideration
-    the response to a treatment. In order to simplify the task for practitioners in uplift modeling,
+Description: Uplift modeling aims at predicting the causal effect of an action such as a marketing campaign 
+    on a particular individual. In order to simplify the task for practitioners in uplift modeling,
     we propose a combination of tools that can be separated into the following ingredients: 
-    i) quantization, ii) visualization, iii) feature engineering, iv) feature selection and, 
-    v) model validation. For more details, please read Belbahri et Al. (2019) 
-    <https://arxiv.org/abs/1901.10867>.
+    i) quantization, ii) visualization, iii) variable selection, iv) parameters estimation and, 
+    v) model validation. For more details, please read \href{https://arxiv.org/abs/1901.10867}{Belbahri et Al. (2019)}.
 Depends: R (>= 3.1.2)
 Imports: dplyr, glmnet, lhs
 License: GPL-2 | GPL-3
