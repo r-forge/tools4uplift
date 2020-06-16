@@ -7,17 +7,14 @@ Uplift barplot
 Barplot of observed uplift with respect to predicted uplift sorted from the highest to the lowest.
 }
 \usage{
-QiniBarPlot(x, title = "Model Performance: Uplift by Group", color = NULL)
+QiniBarPlot(x, ...)
 }
 \arguments{
   \item{x}{
 a table that must be the output of \code{PerformanceUplift} function.
 }
-  \item{title}{
-an overall title for the plot.
-}
-  \item{color}{
-color of the barplot.
+  \item{...}{
+additional barplot arguments.
 }
 }
 \value{

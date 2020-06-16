@@ -1,4 +1,4 @@
-QiniBarPlot <- function(x, title = "Model Performance: Uplift by Group", color = NULL){
+QiniBarPlot <- function(x, ...){
   
   # Plots the Qini barplot.
   #
@@ -11,17 +11,9 @@ QiniBarPlot <- function(x, title = "Model Performance: Uplift by Group", color =
   if (!inherits(x, "PerformanceUplift"))
     stop("tools4uplift: object not of class PerformanceUplift")
   
-  if (is.null(color)==TRUE) {
-    color <- rgb(097, 154, 188, 255, maxColorValue = 255)
-  }
-  
   barplot(x$uplift, 
-          names.arg = round(x$cum_per*100), 
-          col = color,
-          xlab = "Proportion of Population Targeted (%)",
-          ylab = "Uplift (%)",
-          cex.main = 0.85,
-          main = title)
+          names.arg = round(x$cum_per*100),
+          ...)
   
   #Compute the Kendall's uplift rank correlation
   #Raise a warning if there are missing values in x

@@ -7,17 +7,14 @@ Qini curve
 Curve of the function Qini, the incremental observed uplift with respect to predicted uplift sorted from the highest to the lowest.
 }
 \usage{
-QiniCurve(x, title = "Model Performance: Qini Curve", color = NULL)
+QiniCurve(x, ...)
 }
 \arguments{
   \item{x}{
 a table that must be the output of \code{PerformanceUplift} function.
 }
-  \item{title}{
-an overall title for the plot.
-}
-  \item{color}{
-color of the curve.
+  \item{...}{
+additional plot arguments.
 }
 }
 \value{
