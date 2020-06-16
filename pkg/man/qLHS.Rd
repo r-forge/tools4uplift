@@ -10,7 +10,7 @@ A Qini-based LHS (Latin Hypercube Sampling) uplift model.
 qLHS(data, treat, outcome, predictors, 
      lhs_points = 50, lhs_range = 1, 
      adjusted = TRUE, rank.precision = 2, equal.intervals = FALSE, 
-     nb.group = 10, validation = TRUE, p = 0.3, all = FALSE)
+     nb.group = 10, validation = TRUE, p = 0.3)
 }
 \arguments{
   \item{data}{
@@ -49,9 +49,6 @@ if TRUE, the best LHS model is selected based on cross-validation - Default is T
   \item{p}{
 if validation is TRUE, the desired proportion for the validation set. p is a value between 0 and 1 expressed as a decimal, it is set to be proportional to the number of observations per group - Default is 0.3.
 }
-  \item{all}{
-if TRUE, the function returns all considered models and the Qini coefficient associated with each regularization constant - Default is FALSE.
-}
 }
 \details{
 The regularization parameter is chosen based on the interaction uplift model that maximizes the Qini coefficient of the LHS search.
@@ -73,15 +70,7 @@ data("SimUplift")
 upliftLHS <- qLHS(data = SimUplift, treat = "treat", outcome = "y", 
                   predictors = colnames(SimUplift[,3:7]), lhs_points = 5,
                   lhs_range = 1, adjusted = TRUE, equal.intervals = TRUE, 
-                  nb.group = 5, validation = FALSE, all = TRUE)
-                  
-log_reg <- log(upliftLHS$regularization[1,])  
-adj_qini <- upliftLHS$regularization[2,]
-
-plot(log_reg, 
-     adj_qini, 
-     xlab = "Log of Regularization Constant", 
-     ylab = "Adjusted Qini Coefficient")
+                  nb.group = 5, validation = FALSE)
 
 }
 \keyword{lhs}

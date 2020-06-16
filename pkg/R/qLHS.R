@@ -1,7 +1,7 @@
 qLHS <- function (data, treat, outcome, predictors, lhs_points = 50,
                   lhs_range = 1, adjusted = TRUE, 
                   rank.precision = 2, equal.intervals = FALSE, 
-                  nb.group = 10, validation = TRUE, p = 0.3, all = FALSE) {
+                  nb.group = 10, validation = TRUE, p = 0.3) {
   # Qini-based LHS Uplift Model.
   #
   # Args:
@@ -18,16 +18,10 @@ qLHS <- function (data, treat, outcome, predictors, lhs_points = 50,
   
   # All variables must be continuous. Before using this function, change 
   # categorical variables to dummies.
-  #inter.formula <- c()
-  #for (k in seq(1:length(predictors))) {
-  #  inter.formula <- paste(inter.formula, paste(predictors[k], 
-  #                                              treat, sep = ":"), sep = "+")
-  #}
-  #formula <- as.formula(paste(paste(outcome, "~", treat, 
-  #                                  "+"), paste(predictors, collapse = "+"), 
-  #                            inter.formula))
   
-  
+  #data <- rearrange(data, treat, outcome, predictors)
+  data <- standardize(data, treat, outcome)
+    
   formula <- formulaUplift(treat, outcome, predictors)
   
   # Cross-validation
@@ -119,17 +113,9 @@ qLHS <- function (data, treat, outcome, predictors, lhs_points = 50,
       
   }
   
-  if (all == TRUE) {
-    allLHS <- list("regularization" = regularization_matrix,
-                   "modelLHS" = bestLHS)
-    
-    class(allLHS) <- "qLHS"
-    return(allLHS)
-  }
-  else {
-    modelLHS <- bestLHS[[which.max(regularization_matrix[2,])]]
-    return(modelLHS)
-  }
+  modelLHS <- bestLHS[[which.max(regularization_matrix[2,])]]
+  return(modelLHS)
+  
 }
 
 # END FUN

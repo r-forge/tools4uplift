@@ -52,9 +52,9 @@ computeUplift <- function(data, beta){
 
 
 ## standardize the data (Need to rearrange data first)
-standardize <- function(data){
+standardize <- function(data, treat, outcome){
   
-  df <- cbind(data[,c(1,2)],scale(data[,3:ncol(data)]))
+  df <- cbind(data[,c(outcome,treat)],scale(data[,!(names(data) %in% c(outcome,treat))]))
   
   return(df)
 }
