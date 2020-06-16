@@ -20,8 +20,7 @@ export(BestFeatures,
        QiniCurve,
        qLHS,
        SplitUplift,
-       SquareUplift,
-       utils)
+       SquareUplift)
 
 ### Methods
 
@@ -38,4 +37,3 @@ S3method(InterUplift, default)
 S3method(print, PerformanceUplift)
 S3method(print, qLHS)
 S3method(print, SplitUplift)
-
