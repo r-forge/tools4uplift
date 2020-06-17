@@ -13,11 +13,11 @@ export(BestFeatures,
        InterUplift,
        LassoPath,
        PerformanceUplift,
+       barplot.PerformanceUplift,
+       plot.PerformanceUplift,
        predict.DualUplift,
        predict.InterUplift,
        QiniArea,
-       QiniBarPlot,
-       QiniCurve,
        qLHS,
        SplitUplift,
        SquareUplift)
@@ -37,3 +37,7 @@ S3method(InterUplift, default)
 S3method(print, PerformanceUplift)
 S3method(print, qLHS)
 S3method(print, SplitUplift)
+
+S3method(barplot, PerformanceUplift)
+S3method(plot, PerformanceUplift)
+

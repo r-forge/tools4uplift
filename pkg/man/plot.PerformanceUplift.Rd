@@ -1,5 +1,5 @@
-\name{QiniCurve}
-\alias{QiniCurve}
+\name{plot.PerformanceUplift}
+\alias{plot.PerformanceUplift}
 \title{
 Qini curve
 }
@@ -7,7 +7,8 @@ Qini curve
 Curve of the function Qini, the incremental observed uplift with respect to predicted uplift sorted from the highest to the lowest.
 }
 \usage{
-QiniCurve(x, ...)
+
+\method{plot}{PerformanceUplift}(x, ...)
 }
 \arguments{
   \item{x}{
@@ -43,7 +44,7 @@ perf <- PerformanceUplift(data = square1, treat = "treat",
                   outcome = "y", prediction = "Uplift_X1_X2", 
                   equal.intervals = TRUE, nb.group = 5)
                   
-QiniCurve(perf)
+plot(perf, type='b')
 
 }
 \keyword{Qini}

@@ -1,5 +1,5 @@
-\name{QiniBarPlot}
-\alias{QiniBarPlot}
+\name{barplot.PerformanceUplift}
+\alias{barplot.PerformanceUplift}
 \title{
 Uplift barplot
 }
@@ -7,7 +7,8 @@ Uplift barplot
 Barplot of observed uplift with respect to predicted uplift sorted from the highest to the lowest.
 }
 \usage{
-QiniBarPlot(x, ...)
+
+\method{barplot}{PerformanceUplift}(x, ...)
 }
 \arguments{
   \item{x}{
@@ -41,7 +42,7 @@ perf <- PerformanceUplift(data = square1, treat = "treat",
                   outcome = "y", prediction = "Uplift_X1_X2", 
                   equal.intervals = TRUE, nb.group = 5)
 
-QiniBarPlot(perf)
+barplot(perf)
 
 }
 \keyword{performance}
