@@ -8,10 +8,10 @@ Barplot of observed uplift with respect to predicted uplift sorted from the high
 }
 \usage{
 
-\method{barplot}{PerformanceUplift}(x, ...)
+\method{barplot}{PerformanceUplift}(height, ...)
 }
 \arguments{
-  \item{x}{
+  \item{height}{
 a table that must be the output of \code{PerformanceUplift} function.
 }
   \item{...}{

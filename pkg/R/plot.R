@@ -33,15 +33,17 @@ plot.PerformanceUplift <- function(x, ...){
 # Plot Uplift Barplot
 ######################################################################
 
-barplot.PerformanceUplift <- function(x, ...){
+barplot.PerformanceUplift <- function(height, ...){
   
   # Plots the Qini barplot.
   #
   # Args:
-  #   x: a table that must be the output of PerformanceUplift() function.
+  #   height: a table that must be the output of PerformanceUplift() function.
   #
   # Returns:
   #   The Qini barplot.
+  
+  x <- height
   
   if (!inherits(x, "PerformanceUplift"))
     stop("tools4uplift: object not of class PerformanceUplift")
