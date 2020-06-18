@@ -8,8 +8,7 @@ Description: Uplift modeling aims at predicting the causal effect of an action s
     on a particular individual. In order to simplify the task for practitioners in uplift modeling,
     we propose a combination of tools that can be separated into the following ingredients: 
     i) quantization, ii) visualization, iii) variable selection, iv) parameters estimation and, 
-    v) model validation.
-URL: https://arxiv.org/abs/1901.10867
+    v) model validation. For more details, see Belbahri et al. (2019) <arXiv:1901.10867>.
 Depends: R (>= 3.1.2)
 Imports: dplyr, glmnet, lhs
 License: GPL-2 | GPL-3
