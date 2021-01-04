@@ -21,10 +21,33 @@ plot.PerformanceUplift <- function(x, ...){
   
   plot(c(0, x$T_n)/x$T_n[nb]*100, c(0, x$inc_uplift),  
        xlab='Proportion of Population Targeted (%)', 
-       ylab='Incremental Uplift (%)', ...)
+       ylab='Incremental Uplift (%)', 
+       ...)
   lines(c(0,100), c(0, x$inc_uplift[nb]), col=cGrey, type="b", lwd=1.5)
   return(QiniArea(x))
 }
+
+
+
+lines.PerformanceUplift <- function(x, ...){
+  
+  # Adds an extra Qini curve on an existing Qini curves plot.
+  #
+  # Args:
+  #   x: a table that must be the output of PerformanceUplift() function.
+  #
+  # Returns:
+  #   The Qini curve.
+  
+  if (!inherits(x, "PerformanceUplift"))
+    stop("tools4uplift: object not of class PerformanceUplift")
+  
+
+  nb <- length(x$cum_per)
+  lines(c(0, x$T_n)/x$T_n[nb]*100, c(0, x$inc_uplift), ...)
+  return(QiniArea(x))
+}
+
 
 # END FUN
 
@@ -53,6 +76,7 @@ barplot.PerformanceUplift <- function(height, ...){
           xlab='Proportion of Population Targeted (%)', 
           ylab='Uplift (%)',
           ...)
+  abline(h = 0)
   
   #Compute the Kendall's uplift rank correlation
   #Raise a warning if there are missing values in x

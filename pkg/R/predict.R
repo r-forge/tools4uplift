@@ -56,3 +56,33 @@ predict.InterUplift <- function(object, newdata, treat, ...) {
 }
 
 # END FUN
+
+
+######################################################################
+# Predict BinUplift
+######################################################################
+
+predict.BinUplift <- function(object, newdata, ...){
+  
+  if (!inherits(object, "BinUplift"))
+    stop("tools4uplift: object not of class BinUplift")
+  
+  if (length(object) == 1)
+    stop("tools4uplift: make sure that the variable is quantized")
+  
+  # Extract information from BinUplift object
+  cutoffs <- object$x.cut
+  min_var <- min(newdata)
+  max_var <- max(newdata)
+  
+  if (max_var %in% cutoffs) {
+    knots <- unique(c(min_var, sort(cutoffs), Inf))
+  } else {
+    knots <- unique(c(min_var, sort(cutoffs), max_var))
+  }
+  
+  cat_var <- cut(x=newdata, breaks=knots, include.lowest = TRUE, right=FALSE, ...)
+  return(cat_var)
+}
+
+# END FUN

@@ -1,7 +1,5 @@
 BinUpliftEnhanced <- function(data, treat, outcome, var.list, n.split = 10, 
-                              alpha = 0.05, n.min = 30, ylim = NULL, 
-                              ylab = "Uplift", title = NULL, 
-                              color = NULL){
+                              alpha = 0.05, n.min = 30){
   
   # Univariate categorization - augmented data.
   #
@@ -20,7 +18,7 @@ BinUpliftEnhanced <- function(data, treat, outcome, var.list, n.split = 10,
     # For now no gestion of categorical variables
       print(var_name)
       current_binning  <- BinUplift(data, treat, outcome, var_name, n.split, alpha, 
-                                    n.min, ylim, ylab, title, color)
+                                    n.min)
       if (length(current_binning$out.tree) == 1) {
         
         print(paste("Building: The variable", var_name, "will not be enhanced", sep = " "))

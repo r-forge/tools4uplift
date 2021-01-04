@@ -15,6 +15,8 @@ export(BestFeatures,
        PerformanceUplift,
        barplot.PerformanceUplift,
        plot.PerformanceUplift,
+       lines.PerformanceUplift,
+       predict.BinUplift,
        predict.DualUplift,
        predict.InterUplift,
        QiniArea,
@@ -23,6 +25,7 @@ export(BestFeatures,
        SquareUplift)
 
 ### Methods
+S3method(predict, BinUplift)
 
 S3method(print, DualUplift)
 S3method(summary, DualUplift)
@@ -40,4 +43,5 @@ S3method(print, SplitUplift)
 
 S3method(barplot, PerformanceUplift)
 S3method(plot, PerformanceUplift)
+S3method(lines, PerformanceUplift)
 

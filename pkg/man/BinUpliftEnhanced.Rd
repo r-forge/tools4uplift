@@ -8,9 +8,7 @@ Univariate optimal partitionning for Uplift Models. The algorithm quantizes seve
 }
 \usage{
 BinUpliftEnhanced(data, treat, outcome, var.list, n.split = 10, 
-                  alpha = 0.05, n.min = 30, ylim = NULL, 
-                  ylab = "Uplift", title = NULL, 
-                  color = NULL)
+                  alpha = 0.05, n.min = 30)
 }
 \arguments{
   \item{data}{
@@ -34,21 +32,9 @@ significance level of the statistical test (must be between 0 and 1).
   \item{n.min}{
 minimum number of observations per child node.
 }
-  \item{ylim}{
-a range for the y axis.
-}
-  \item{ylab}{
-a title for the y axis.
-}
-  \item{title}{
-an overall title for the plot.
-}
-  \item{color}{
-a color for the plot. If ommitted, the color will be set by default to a custom light blue. 
-}
 }
 \value{
-an augmented data frame with quantized variables. If a variable is enhanced, the function returns automatically a barplot.
+an augmented data frame with quantized variables.
 }
 \references{
 Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
@@ -68,4 +54,4 @@ train.enhanced <- BinUpliftEnhanced(data = SimUplift, treat = "treat", outcome =
                                     var.list = colnames(SimUplift[,3:7]))
 }
 \keyword{tree}
-\keyword{binning}
+\keyword{quantization}

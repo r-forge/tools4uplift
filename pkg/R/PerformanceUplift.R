@@ -1,4 +1,5 @@
-PerformanceUplift <- function(data, treat, outcome, prediction, rank.precision = 2, equal.intervals = FALSE, nb.group = 10){
+PerformanceUplift <- function(data, treat, outcome, prediction, nb.group = 10, 
+                              equal.intervals = TRUE, rank.precision = 2){
   
   # Computes the performance of an uplift estimator.
   #
