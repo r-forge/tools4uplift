@@ -53,13 +53,12 @@ Mouloud Belbahri
 library(tools4uplift)
 data("SimUplift")
 
-square1 <- SquareUplift(SimUplift, "X1", "X2", "treat", "y")
-
-#performance of the heat map uplift estimation on the training dataset
-perf <- PerformanceUplift(data = square1, treat = "treat", 
-                  outcome = "y", prediction = "Uplift_X1_X2",
-                  equal.intervals = TRUE, nb.group = 5)
+model1 <- BinUplift2d(SimUplift, "X1", "X2", "treat", "y")
+perf1 <- PerformanceUplift(data = model1, treat = "treat", 
+                  outcome = "y", prediction = "Uplift_X1_X2", 
+                  equal.intervals = TRUE, nb.group = 3)
                   
-print(perf)
+                  
+print(perf1)
 }
 \keyword{performance}

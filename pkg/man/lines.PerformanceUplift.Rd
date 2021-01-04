@@ -1,5 +1,5 @@
-\name{plot.PerformanceUplift}
-\alias{plot.PerformanceUplift}
+\name{lines.PerformanceUplift}
+\alias{lines.PerformanceUplift}
 \title{
 Qini curve
 }
@@ -8,7 +8,7 @@ Curve of the function Qini, the incremental observed uplift with respect to pred
 }
 \usage{
 
-\method{plot}{PerformanceUplift}(x, ...)
+\method{lines}{PerformanceUplift}(x, ...)
 }
 \arguments{
   \item{x}{
@@ -42,8 +42,13 @@ perf1 <- PerformanceUplift(data = model1, treat = "treat",
                   outcome = "y", prediction = "Uplift_X1_X2", 
                   equal.intervals = TRUE, nb.group = 3)
                   
+model2 <- BinUplift2d(SimUplift, "X3", "X4", "treat", "y")
+perf2 <- PerformanceUplift(data = model2, treat = "treat", 
+                  outcome = "y", prediction = "Uplift_X3_X4", 
+                  equal.intervals = TRUE, nb.group = 3)
                   
 plot(perf1, type='b')
+lines(perf2, type='b', col='red')
 
 }
 \keyword{Qini}
