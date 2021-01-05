@@ -1,7 +1,6 @@
 importFrom("grDevices", "colorRampPalette", "heat.colors", "rgb")
 importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "par", "plot", "title")
 importFrom("stats", "as.formula", "binomial", "coef", "complete.cases", "cor", "glm", "model.frame", "model.matrix", "predict", "predict.glm", "qnorm", "quantile", "rbinom", "runif", "summary.glm")
-importFrom("lattice", "do.breaks", "levelplot")
 
 import(BiasedUrn,
        dplyr,
