@@ -116,7 +116,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
               colorRampPalette(c("white", "seagreen"))(positive.length))
     
     
-    print(levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
+    print(lattice::levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
               xlab = var1,
               ylab = var2,
               data = data, 
@@ -124,13 +124,13 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
               col.regions = cols,
               main = main_train,
               colorkey = list(col = cols, 
-                              at = do.breaks(range(data[, biprediction]), 
+                              at = lattice:do.breaks(range(data[, biprediction]), 
                                              color.ramp.length)),
               cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
 
     
     if (is.null(valid) == FALSE){
-      print(levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
+      print(lattice::levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
                 xlab = var1,
                 ylab = var2,
                 data = valid, 
@@ -138,7 +138,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
                 col.regions = cols,
                 main = main_valid,
                 colorkey = list(col = cols, 
-                                at = do.breaks(range(valid[, biprediction]), 
+                                at = lattice::do.breaks(range(valid[, biprediction]), 
                                                color.ramp.length)),
                 cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
     }
