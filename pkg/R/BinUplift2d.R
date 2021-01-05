@@ -98,6 +98,14 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
     
   }
   
+  main_train = ""
+  
+  if (is.null(valid) == FALSE){
+    main_train = "Training Heatmap"
+    main_valid = "Validation Heatmap"
+  }
+  
+  
   if (plotit == TRUE){
     color.ramp.length <- nb.col
     negative.length <- round(abs(min(data[, biprediction]) - mean(data[, biprediction])) / 
@@ -114,7 +122,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
               data = data, 
               panel = panel.levelplot.points,
               col.regions = cols,
-              main = "Training Heatmap",
+              main = main_train,
               colorkey = list(col = cols, 
                               at = do.breaks(range(data[, biprediction]), 
                                              color.ramp.length)),
@@ -128,7 +136,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
                 data = valid, 
                 panel = panel.levelplot.points,
                 col.regions = cols,
-                main = "Validation Heatmap",
+                main = main_valid,
                 colorkey = list(col = cols, 
                                 at = do.breaks(range(valid[, biprediction]), 
                                                color.ramp.length)),

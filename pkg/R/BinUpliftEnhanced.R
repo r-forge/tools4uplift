@@ -19,7 +19,7 @@ BinUpliftEnhanced <- function(data, treat, outcome, var.list, n.split = 10,
       print(var_name)
       current_binning  <- BinUplift(data, treat, outcome, var_name, n.split, alpha, 
                                     n.min)
-      if (length(current_binning$out.tree) == 1) {
+      if (length(current_binning) == 1) {
         
         print(paste("Building: The variable", var_name, "will not be enhanced", sep = " "))
       
