@@ -46,7 +46,8 @@ number of colors for the heatmap. Default is 20. Must be an integer and should g
 returns an augmented dataset with \code{Uplift_var1_var2} variable representing a predicted uplift for each observation based on the rectangle it belongs to. The function also plots a heat map of observed uplifts.
 }
 \references{
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
+<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
 }
 \author{
 Mouloud Belbahri

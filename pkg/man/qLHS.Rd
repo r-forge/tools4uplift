@@ -57,7 +57,8 @@ The regularization parameter is chosen based on the interaction uplift model tha
 the models with LHS coefficients of class \code{InterUplift}.
 }
 \references{
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2020) Qini-based Uplift Regression, 
+<https://arxiv.org/pdf/1911.12474.pdf>
 }
 \author{
 Mouloud Belbahri

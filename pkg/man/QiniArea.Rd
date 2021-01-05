@@ -23,7 +23,8 @@ the Qini or the adjusted Qini coefficient
 \references{
 Radcliffe, N. (2007). Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, An Annual Publication from the Direct Marketing Association Analytics Council, pages 14-21.
 
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
+<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
 }
 \author{
 Mouloud Belbahri

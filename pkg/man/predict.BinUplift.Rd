@@ -22,7 +22,8 @@ Predictions from the univariate quantization method, i.e. this function transfor
 a quantized variable
 }
 \references{
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, <https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
+<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
 }
 \author{
 Mouloud Belbahri
