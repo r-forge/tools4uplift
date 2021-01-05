@@ -124,7 +124,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
               col.regions = cols,
               main = main_train,
               colorkey = list(col = cols, 
-                              at = lattice:do.breaks(range(data[, biprediction]), 
+                              at = lattice::do.breaks(range(data[, biprediction]), 
                                              color.ramp.length)),
               cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
 
