@@ -1,7 +1,7 @@
 \name{qLHS}
 \alias{qLHS}
 \title{
-Qini-based LHS Uplift Model
+Qini-based uplift regression
 }
 \description{
 A Qini-based LHS (Latin Hypercube Sampling) uplift model.

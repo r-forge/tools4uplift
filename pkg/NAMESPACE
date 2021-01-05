@@ -23,7 +23,8 @@ export(BestFeatures,
        predict.InterUplift,
        QiniArea,
        qLHS,
-       SplitUplift)
+       SplitUplift,
+       UpliftPerCat)
 
 ### Methods
 S3method(predict, BinUplift)

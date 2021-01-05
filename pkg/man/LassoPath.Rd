@@ -1,7 +1,7 @@
 \name{LassoPath}
 \alias{LassoPath}
 \title{
-LASSO path for penalized logistic regression
+LASSO path for the penalized logistic regression
 }
 \description{
 Fit an interaction uplift model via penalized maximum likelihood. The regularization path is computed for the lasso penalty at a grid of values for the regularization constant.

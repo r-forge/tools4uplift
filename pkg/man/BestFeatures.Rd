@@ -1,10 +1,10 @@
 \name{BestFeatures}
 \alias{BestFeatures}
 \title{
-Feature selection for the interaction estimator
+Qini-based feature selection
 }
 \description{
-Qini-based Penalized Uplift Regression in order to select the features that maximize the Qini coefficient. 
+Qini-based Uplift Regression in order to select the features that maximize the Qini coefficient. 
 }
 \usage{
 BestFeatures(data, treat, outcome, predictors, rank.precision = 2, 

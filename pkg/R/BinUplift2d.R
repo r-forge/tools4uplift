@@ -123,9 +123,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
               panel = panel.levelplot.points,
               col.regions = cols,
               main = main_train,
-              colorkey = list(col = cols, 
-                              at = lattice::do.breaks(range(data[, biprediction]), 
-                                             color.ramp.length)),
+              colorkey = list(col = cols, at = lattice::do.breaks(range(data[, biprediction]), color.ramp.length)),
               cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
 
     
@@ -137,9 +135,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
                 panel = panel.levelplot.points,
                 col.regions = cols,
                 main = main_valid,
-                colorkey = list(col = cols, 
-                                at = lattice::do.breaks(range(valid[, biprediction]), 
-                                               color.ramp.length)),
+                colorkey = list(col = cols, at = lattice::do.breaks(range(valid[, biprediction]), color.ramp.length)),
                 cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
     }
     
