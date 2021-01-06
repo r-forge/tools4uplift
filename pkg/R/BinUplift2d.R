@@ -17,8 +17,6 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
   #   An augmented dataset with Uplift_var1_var2 variable representing a predicted 
   #   uplift for each observation based on the rectangle it belongs to.
   
-  require(lattice)
-  
   # Error handling
   if (n.split <= 1) stop("n.split must be > 1")
   if (n.split %% 1 != 0) stop("n.split must be an integer")
