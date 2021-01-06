@@ -17,6 +17,7 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
   #   An augmented dataset with Uplift_var1_var2 variable representing a predicted 
   #   uplift for each observation based on the rectangle it belongs to.
   
+  require(lattice)
   
   # Error handling
   if (n.split <= 1) stop("n.split must be > 1")
@@ -116,27 +117,31 @@ BinUplift2d <- function(data, var1, var2, treat, outcome, valid = NULL,
               colorRampPalette(c("white", "seagreen"))(positive.length))
     
     
-    print(lattice::levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
+    print(levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
               xlab = var1,
               ylab = var2,
               data = data, 
               panel = panel.levelplot.points,
               col.regions = cols,
               main = main_train,
-              colorkey = list(col = cols, at = lattice::do.breaks(range(data[, biprediction]), color.ramp.length)),
-              cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
+              colorkey = list(col = cols, 
+                              at = do.breaks(range(data[, biprediction]), 
+                                            color.ramp.length)),
+              cex = 1.5) + layer_(panel.2dsmoother(method="lm", n = 100)))
 
     
     if (is.null(valid) == FALSE){
-      print(lattice::levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
+      print(levelplot(as.formula(noquote(paste(biprediction, "~", var1,"*", var2))),
                 xlab = var1,
                 ylab = var2,
                 data = valid, 
                 panel = panel.levelplot.points,
                 col.regions = cols,
                 main = main_valid,
-                colorkey = list(col = cols, at = lattice::do.breaks(range(valid[, biprediction]), color.ramp.length)),
-                cex = 1.5) + layer_(panel.2dsmoother(..., method="lm", n = 100)))
+                colorkey = list(col = cols, 
+                                at = do.breaks(range(valid[, biprediction]),
+                                              color.ramp.length)),
+                cex = 1.5) + layer_(panel.2dsmoother(method="lm", n = 100)))
     }
     
   }
