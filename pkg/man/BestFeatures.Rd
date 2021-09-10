@@ -1,5 +1,6 @@
 \name{BestFeatures}
 \alias{BestFeatures}
+\alias{BestFeatures.default}
 \title{
 Qini-based feature selection
 }

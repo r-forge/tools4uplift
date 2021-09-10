@@ -47,3 +47,5 @@ S3method(barplot, PerformanceUplift)
 S3method(plot, PerformanceUplift)
 S3method(lines, PerformanceUplift)
 
+S3method(BestFeatures, default)
+S3method(BinUplift, default)

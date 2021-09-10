@@ -1,4 +1,6 @@
-BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min = 30){
+BinUplift <- function(data, ...) UseMethod("BinUplift")
+
+BinUplift.default <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min = 30){
   
   # Univariate quantization for uplift.
   #
@@ -277,7 +279,7 @@ BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min
     return(out.tree.cat)
   }  else if (is.factor(data[[x]])==FALSE) {
     out.tree <- BinUpliftTree(data, outcome, treat, x, n.split, alpha, n.min)
-    class(out.tree) <- "BinUplift"
+    #class(out.tree) <- "BinUplift"
     return(out.tree)
   }
   

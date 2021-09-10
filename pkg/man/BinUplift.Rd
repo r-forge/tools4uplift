@@ -1,5 +1,6 @@
 \name{BinUplift}
 \alias{BinUplift}
+\alias{BinUplift.default}
 \title{
 Univariate quantization
 }
