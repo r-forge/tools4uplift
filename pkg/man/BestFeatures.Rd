@@ -8,9 +8,9 @@ Qini-based feature selection
 Qini-based Uplift Regression in order to select the features that maximize the Qini coefficient. 
 }
 \usage{
-BestFeatures(data, treat, outcome, predictors, rank.precision = 2, 
-                            equal.intervals = FALSE, nb.group = 10, 
-                            validation = TRUE, p = 0.3) 
+\method{BestFeatures}{default}(data, treat, outcome, predictors, rank.precision = 2, 
+                              equal.intervals = FALSE, nb.group = 10, 
+                              validation = TRUE, p = 0.3) 
 }
 \arguments{
   \item{data}{
