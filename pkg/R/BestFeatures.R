@@ -1,4 +1,6 @@
-BestFeatures <- function (data, treat, outcome, predictors, rank.precision = 2, 
+BestFeatures <- function(data, ...) UseMethod("BestFeatures")
+
+BestFeatures.default <- function (data, treat, outcome, predictors, rank.precision = 2, 
                             equal.intervals = FALSE, nb.group = 10, 
                             validation = TRUE, p = 0.3) {
     # Feature selection for the interaction estimator.
@@ -77,7 +79,7 @@ BestFeatures <- function (data, treat, outcome, predictors, rank.precision = 2,
     # We also need to know which variables were selected
     best.features <- path[path[, "lambda"] == best.model["lambda"], -c(1, 2, 3)]
     best.features <- names(best.features[best.features != 0])
-    class(best.features) <- "BestFeatures"
+    #class(best.features) <- "BestFeatures"
     return(best.features)
 }
 
