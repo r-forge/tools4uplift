@@ -39,8 +39,7 @@ an interaction model
 \references{
 Lo, V., S., Y. (2002) The true lift model: a novel data mining approach to response modeling in database marketing. ACM SIGKDD Explorations Newsletter, Vol. 4(2), 78-86.
 
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
-<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift
 }
 \author{
 Mouloud Belbahri

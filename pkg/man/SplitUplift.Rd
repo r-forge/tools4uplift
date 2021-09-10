@@ -25,8 +25,7 @@ Your grouping variables. Generally, for uplift modelling, this should be a vecto
 \item{valid}{a validation data frame of 1-p percent}
 }
 \references{
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
-<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift
 }
 \author{
 Mouloud Belbahri

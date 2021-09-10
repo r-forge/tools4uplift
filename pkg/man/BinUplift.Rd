@@ -38,8 +38,7 @@ minimum number of observations per child node.
 \item{out.tree}{Descriptive statistics for the different nodes of the tree}
 }
 \references{
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
-<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift
 }
 \author{
 Mouloud Belbahri

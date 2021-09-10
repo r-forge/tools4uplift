@@ -48,8 +48,10 @@ The regularization parameter is chosen based on the interaction uplift model tha
 a vector of names representing the selected best features from the penalized logistic regression.
 }
 \references{
-Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2019) Uplift Regression, 
-<https://dms.umontreal.ca/~murua/research/UpliftRegression.pdf>
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2020) Qini-based Uplift Regression, 
+<https://arxiv.org/pdf/1911.12474.pdf>
+
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift
 }
 \author{
 Mouloud Belbahri
