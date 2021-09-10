@@ -1,5 +1,3 @@
-BestFeatures <- function(data, ...) UseMethod("BestFeatures")
-
 BestFeatures <- function (data, treat, outcome, predictors, rank.precision = 2, 
                             equal.intervals = FALSE, nb.group = 10, 
                             validation = TRUE, p = 0.3) {

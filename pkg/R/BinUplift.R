@@ -1,5 +1,3 @@
-BinUplift <- function(data, ...) UseMethod("BinUplift")
-
 BinUplift <- function(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min = 30){
   
   # Univariate quantization for uplift.

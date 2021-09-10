@@ -49,8 +49,5 @@ S3method(lines, PerformanceUplift)
 S3method(QiniArea, default)
 S3method(QiniArea, PerformanceUplift)
 
-S3method(BestFeatures)
-S3method(BinUplift)
-
 
 
