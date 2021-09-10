@@ -1,5 +1,7 @@
 \name{QiniArea}
 \alias{QiniArea}
+\alias{QiniArea.default}
+\alias{QiniArea.PerformanceUplift}
 \title{
 Qini coefficient
 }
@@ -7,7 +9,7 @@ Qini coefficient
 Computes the area under the Qini curve.
 }
 \usage{
-QiniArea(x, adjusted=FALSE)
+\method{QiniArea}{PerformanceUplift}(x, adjusted=FALSE)
 }
 \arguments{
   \item{x}{

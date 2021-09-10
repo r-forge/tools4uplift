@@ -1,6 +1,5 @@
 \name{BinUplift}
 \alias{BinUplift}
-\alias{BinUplift.default}
 \title{
 Univariate quantization
 }
@@ -8,7 +7,7 @@ Univariate quantization
 Univariate optimal partitionning for Uplift Models. The algorithm quantizes a single variable into bins with significantly different observed uplift.
 }
 \usage{
-\method{BinUplift}{default}(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min = 30)
+BinUplift(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min = 30)
 }
 \arguments{
   \item{data}{

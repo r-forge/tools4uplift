@@ -1,6 +1,5 @@
 \name{BestFeatures}
 \alias{BestFeatures}
-\alias{BestFeatures.default}
 \title{
 Qini-based feature selection
 }
@@ -8,7 +7,7 @@ Qini-based feature selection
 Qini-based Uplift Regression in order to select the features that maximize the Qini coefficient. 
 }
 \usage{
-\method{BestFeatures}{default}(data, treat, outcome, predictors, rank.precision = 2, 
+BestFeatures(data, treat, outcome, predictors, rank.precision = 2, 
                               equal.intervals = FALSE, nb.group = 10, 
                               validation = TRUE, p = 0.3) 
 }
