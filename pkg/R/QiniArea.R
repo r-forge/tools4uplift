@@ -3,7 +3,7 @@ QiniArea <- function(x, ...)  UseMethod("QiniArea")
 QiniArea.default <- function(x, ...)
   stop("No method implemented for this class of object")
 
-QiniArea.PerformanceUplift <- function(x, adjusted=FALSE){
+QiniArea.PerformanceUplift <- function(x, adjusted=FALSE, ...){
   
   # Computes the area under the Qini curve.
   #
